@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="el">
+<head>
+  <meta charset="UTF-8">
+  <title>Υπολογισμός Μισθοδοσίας</title>
+</head>
+<body>
+  <h1>Υπολογιστής Μισθού PHĀEA</h1>
+
+  <label>Ημερομίσθιο (€): <input type="number" id="imeromisthio" /></label><br><br>
+  <label>Αριθμός Ημερών: <input type="number" id="meres" /></label><br><br>
+  <button onclick="ypologismos()">Υπολόγισε</button>
+
+  <h2 id="apotelesma"></h2>
+
+  <script>
+    function ypologismos() {
+      const imeromisthio = parseFloat(document.getElementById('imeromisthio').value);
+      const meres = parseFloat(document.getElementById('meres').value);
+      if (!isNaN(imeromisthio) && !isNaN(meres)) {
+        const synoliko = imeromisthio * meres;
+        document.getElementById('apotelesma').innerText = `Συνολικός Μισθός: €${synoliko.toFixed(2)}`;
+      } else {
+        document.getElementById('apotelesma').innerText = "Συμπλήρωσε σωστά όλα τα πεδία.";
+      }
+    }
+  </script>
+</body>
+</html>

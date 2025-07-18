@@ -3,26 +3,140 @@
 <head>
   <meta charset="UTF-8">
   <title>Υπολογισμός Μισθοδοσίας</title>
+  <style>
+    body { font-family: Arial; padding: 20px; }
+    label, select, input { display: block; margin: 10px 0; }
+    table { border-collapse: collapse; margin-top: 20px; }
+    td, th { border: 1px solid #ccc; padding: 6px 10px; text-align: left; }
+  </style>
 </head>
 <body>
-  <h1>Υπολογιστής Μισθού PHĀEA</h1>
+  <h1>Υπολογισμός Μισθοδοσίας PHĀEA</h1>
 
-  <label>Ημερομίσθιο (€): <input type="number" id="imeromisthio" /></label><br><br>
-  <label>Αριθμός Ημερών: <input type="number" id="meres" /></label><br><br>
-  <button onclick="ypologismos()">Υπολόγισε</button>
+  <label>Κατηγορία:
+    <select id="katigoria">
+      <option value="A">Α</option>
+      <option value="B" selected>Β</option>
+      <option value="G">Γ</option>
+      <option value="D">Δ</option>
+    </select>
+  </label>
 
-  <h2 id="apotelesma"></h2>
+  <label>Έτη προϋπηρεσίας:
+    <input type="number" id="eti" min="0" value="5">
+  </label>
+
+  <label>Έγγαμος/Διαζευγμένος/Μονογονέας:
+    <select id="egamos">
+      <option value="OXI">Όχι</option>
+      <option value="NAI">Ναι</option>
+    </select>
+  </label>
+
+  <label>Εποχιακός:
+    <select id="epoxiakos">
+      <option value="OXI">Όχι</option>
+      <option value="NAI" selected>Ναι</option>
+    </select>
+  </label>
+
+  <label>Ανθυγιεινό επίδομα (κουζίνα, καμαριέρα κλπ):
+    <select id="anthig">
+      <option value="OXI">Όχι</option>
+      <option value="NAI">Ναι</option>
+    </select>
+  </label>
+
+  <label>Πτυχίο τουριστικής σχολής:
+    <select id="ptyxio">
+      <option value="none">Καμία</option>
+      <option value="taxyrythmi">Ταχύρρυθμη</option>
+      <option value="mesi">Μέση</option>
+      <option value="anotati">Ανώτατη</option>
+    </select>
+  </label>
+
+  <label>Διακεκομμένο ωράριο:
+    <select id="diakek">
+      <option value="OXI">Όχι</option>
+      <option value="NAI">Ναι</option>
+    </select>
+  </label>
+
+  <label>Παιδιά / Μονογονεϊκή / ΑΜΕΑ:
+    <select id="paidia">
+      <option value="OXI">Όχι</option>
+      <option value="NAI">Ναι</option>
+    </select>
+  </label>
+
+  <label>6η Ημέρα (Ρεπό που δούλεψαν):
+    <input type="number" id="repo" value="0">
+  </label>
+
+  <label>Αργίες:
+    <input type="number" id="argies" value="0">
+  </label>
+
+  <label>Νυχτερινές Ώρες:
+    <input type="number" id="nychta" value="0">
+  </label>
+
+  <button onclick="ypologise()">Υπολόγισε</button>
+
+  <div id="apotelesmata"></div>
 
   <script>
-    function ypologismos() {
-      const imeromisthio = parseFloat(document.getElementById('imeromisthio').value);
-      const meres = parseFloat(document.getElementById('meres').value);
-      if (!isNaN(imeromisthio) && !isNaN(meres)) {
-        const synoliko = imeromisthio * meres;
-        document.getElementById('apotelesma').innerText = `Συνολικός Μισθός: €${synoliko.toFixed(2)}`;
-      } else {
-        document.getElementById('apotelesma').innerText = "Συμπλήρωσε σωστά όλα τα πεδία.";
-      }
+    function ypologise() {
+      // Βασικός μισθός & προσαυξήσεις
+      let basikos = 998;
+      let eti = parseInt(document.getElementById('eti').value);
+      let proypiresia = eti * 6.2;
+
+      let egamos = document.getElementById('egamos').value === 'NAI' ? 0.00 : 0;
+      let epoxiakos = document.getElementById('epoxiakos').value === 'NAI' ? 102.9 : 0;
+      let anthig = document.getElementById('anthig').value === 'NAI' ? 74.85 : 0;
+
+      let ptyxio = document.getElementById('ptyxio').value;
+      let ptyxioPoso = 0;
+      if (ptyxio === 'taxyrythmi') ptyxioPoso = 15;
+      if (ptyxio === 'mesi') ptyxioPoso = 30;
+      if (ptyxio === 'anotati') ptyxioPoso = 50;
+
+      let diakek = document.getElementById('diakek').value === 'NAI' ? 40 : 0;
+      let paidia = document.getElementById('paidia').value === 'NAI' ? 30 : 0;
+
+      let miktes = basikos + proypiresia + epoxiakos + anthig + ptyxioPoso + diakek + paidia;
+      let kathares = miktes * 0.815; // περίπου 18.5% κρατήσεις
+
+      let imeromisthio = miktes / 26.1;
+      let katharoHmeromisthio = kathares / 26.1;
+
+      let oromisthio = miktes / (26.1 * 8);
+      let katharoOromisthio = kathares / (26.1 * 8);
+
+      let repo = parseInt(document.getElementById('repo').value);
+      let argies = parseInt(document.getElementById('argies').value);
+      let nychta = parseInt(document.getElementById('nychta').value);
+
+      let pros6hmero = repo * katharoHmeromisthio * 0.25;
+      let prosArgies = argies * katharoHmeromisthio * 0.75;
+      let prosNyxta = nychta * katharoOromisthio * 0.2;
+
+      let sinoloKathares = kathares + pros6hmero + prosArgies + prosNyxta;
+
+      document.getElementById('apotelesmata').innerHTML = `
+        <table>
+          <tr><th>Μικτές Αποδοχές</th><td>€${miktes.toFixed(2)}</td></tr>
+          <tr><th>Καθαρές Αποδοχές</th><td>€${kathares.toFixed(2)}</td></tr>
+          <tr><th>Καθαρό Ημερομίσθιο</th><td>€${katharoHmeromisthio.toFixed(2)}</td></tr>
+          <tr><th>Καθαρό Ωρομίσθιο</th><td>€${katharoOromisthio.toFixed(2)}</td></tr>
+          <tr><th>Προσαύξηση 6ης Ημέρας</th><td>€${pros6hmero.toFixed(2)}</td></tr>
+          <tr><th>Προσαύξηση Αργιών</th><td>€${prosArgies.toFixed(2)}</td></tr>
+          <tr><th>Προσαύξηση Νυχτερινών Ωρών</th><td>€${prosNyxta.toFixed(2)}</td></tr>
+          <tr><th><strong>Σύνολο Καθαρών Αποδοχών</strong></th><td><strong>€${sinoloKathares.toFixed(2)}</strong></td></tr>
+        </table>
+      `;
     }
   </script>
 </body>

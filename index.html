@@ -115,7 +115,8 @@
       <small>Αντιστοιχίστε την ειδικότητά σας και επιλέξτε την κατηγορία στην οποία ανήκετε</small>
 
       <label>Έτη Προϋπηρεσίας (βάσει ενσήμων):
-        <input type="number">
+        <input type="number" id="expInput" min="0">
+        <input type="text" id="expResult" readonly placeholder="Αποτέλεσμα">
       </label>
       <small>Μετράτε βάσει ενσήμων. Δεν λαμβάνεται υπόψη η εποχική εργασία. Ισχύει και υπολογισμός “νεκρής περιόδου” βάσει σύμβασης.</small>
 
@@ -124,7 +125,7 @@
           <option>Άγαμος</option>
           <option>Έγγαμος</option>
           <option>Διαζευγμένος</option>
-          <option>Μονογονέας</option>
+          <option>Μονογονείας</option>
         </select>
       </label>
 
@@ -195,7 +196,7 @@
     </div>
   </div>
 
-  <h2>Βήμα 2: ΠΡΑΓΜΑΤΙΚΗ ΑΠΑΣΧΟΛΗΣΗ</h2>
+  <h2>Βήμα 2: ΠΡΑΓΜΑΤΙΚΗ ΑΠΑΣΧόΛΗΣΗ</h2>
   <div class="left">
     <label>Μήνας Αναφοράς:
       <input type="month">
@@ -245,8 +246,19 @@
     };
 
     document.getElementById('categorySelect').addEventListener('change', function() {
-      const resultField = document.getElementById('categoryResult');
-      resultField.value = salaryMap[this.value] || '';
+      document.getElementById('categoryResult').value = salaryMap[this.value] || '';
+    });
+
+    // Υπολογισμός επιδόματος προϋπηρεσίας
+    const expInput = document.getElementById('expInput');
+    expInput.addEventListener('input', function() {
+      const years = parseInt(this.value, 10);
+      if (!isNaN(years) && years >= 0) {
+        const amount = (years * 6.20).toFixed(2).replace('.', ',') + '€';
+        document.getElementById('expResult').value = amount;
+      } else {
+        document.getElementById('expResult').value = '';
+      }
     });
   </script>
 </body>

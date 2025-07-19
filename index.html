@@ -54,6 +54,13 @@
       margin-bottom: 30px;
     }
 
+    .hint {
+      font-size: 12px;
+      color: #666;
+      margin-bottom: 10px;
+      line-height: 1.4;
+    }
+
     .flex-container {
       display: flex;
       flex-direction: row;
@@ -91,6 +98,7 @@
     <div class="flex-container">
       <div class="half">
         <label>Κατηγορία:
+          <span class="hint">Εντοπίστε την ειδικότητά σας στον πίνακα δεξιά και επιλέξτε την κατηγορία στην οποία ανήκει.</span>
           <select id="katigoria">
             <option value="A">Α</option>
             <option value="B" selected>Β</option>
@@ -99,21 +107,25 @@
           </select>
         </label>
         <label>Έτη Προϋπηρεσίας:
+          <span class="hint">Υπολογίζονται με βάση τα συνολικά ένσημα. Προσμετράται και η "νεκρή περίοδος" (διάστημα χωρίς εργασία) εφόσον μεσολάβησε διάστημα μέχρι 3 μήνες μεταξύ δύο σεζόν στον ίδιο εργοδότη.</span>
           <input type="number" id="eti" min="0" value="0">
         </label>
         <label>Οικογενειακή Κατάσταση (Έγγαμος / Διαζ. / Μονογονέας):
+          <span class="hint">Επιλέξτε "Ναι" για να προστεθεί το επίδομα οικογενειακών βαρών 10%.</span>
           <select id="oikKat">
             <option value="OXI">Όχι</option>
             <option value="NAI">Ναι</option>
           </select>
         </label>
         <label>Εποχιακός:
+          <span class="hint">Επιλέξτε "Ναι" αν εργάζεστε σε εποχιακή ξενοδοχειακή μονάδα – εφαρμόζεται επίδομα 10%.</span>
           <select id="epoxiakos">
             <option value="OXI">Όχι</option>
             <option value="NAI">Ναι</option>
           </select>
         </label>
         <label>Ανθυγιεινή Εργασία:
+          <span class="hint">Επιλέξτε την αντίστοιχη ομάδα: Κουζίνα (10%), Λάντζα (7%), Καμαριέρες/Καθαρίστριες (5%).</span>
           <select id="anthyg">
             <option value="OXI">Όχι</option>
             <option value="koyzina">Κουζίνα</option>
@@ -122,6 +134,7 @@
           </select>
         </label>
         <label>Τουριστική Εκπαίδευση:
+          <span class="hint">Το ποσοστό επιδόματος (15%, 10%, 6%) υπολογίζεται επί βασικού + προϋπηρεσίας. Απαραίτητη βεβαίωση παρακολούθησης για Ταχύρρυθμη.</span>
           <select id="touristiki">
             <option value="none">Καμία</option>
             <option value="taxyrythmi">Ταχύρρυθμη</option>
@@ -130,12 +143,14 @@
           </select>
         </label>
         <label>Διακεκομμένο Ωράριο:
+          <span class="hint">Επιλέξτε "Ναι" αν εργάζεστε με σπαστό ωράριο – προστίθεται επίδομα 5%.</span>
           <select id="diakek">
             <option value="OXI">Όχι</option>
             <option value="NAI">Ναι</option>
           </select>
         </label>
         <label>Παιδιά / Μονογονεϊκή / ΑΜΕΑ:
+          <span class="hint">Αν ισχύει μία από τις εξής προϋποθέσεις: τουλάχιστον 3 τέκνα, μονογονεϊκή οικογένεια ή τέκνο ΑΜΕΑ έως 18 ετών – προστίθεται 50€.</span>
           <select id="paidia">
             <option value="OXI">Όχι</option>
             <option value="NAI">Ναι</option>

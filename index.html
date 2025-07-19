@@ -100,9 +100,58 @@
     </div>
   </div>
 
+  <div class="section">
+    <h2>Βήμα 2: ΠΡΑΓΜΑΤΙΚΗ ΑΠΑΣΧΟΛΗΣΗ</h2>
+    <label>Ο μήνας επιλέχθηκε:
+      <input type="month" id="minas">
+    </label>
+    <label>Ήμερες σε πρόσληψη:
+      <select id="pliris">
+        <option value="full">Ολόκληρος Μήνας</option>
+        <option value="part">Από... έως...</option>
+      </select>
+    </label>
+    <div id="imerominies" style="display: none;">
+      <label>Από:
+        <input type="date" id="apo">
+      </label>
+      <label>Έως:
+        <input type="date" id="eos">
+      </label>
+    </div>
+    <label>Ημερομίσθια που εργάστηκες:
+      <input type="number" id="imeres" min="0">
+    </label>
+    <label>Πόσες Κυριακές:
+      <input type="number" id="kyriakes" min="0">
+    </label>
+    <label>Πόσες Αργίες:
+      <input type="number" id="argies" min="0">
+    </label>
+    <label>Πόσες Νυχτερινές Ώρες:
+      <input type="number" id="nychta" min="0">
+    </label>
+    <label>Κυριακές που ήταν 6η ημέρα:
+      <input type="number" id="k6_kyriaki" min="0">
+    </label>
+    <label>Νυχτερινά σε Κυριακή:
+      <input type="number" id="nychta_kyriaki" min="0">
+    </label>
+    <label>Νυχτερινά σε Κυριακή + 6η:
+      <input type="number" id="nychta_kyriaki_6i" min="0">
+    </label>
+  </div>
+
+  <button onclick="ypologise()">Υπολόγισε</button>
+  <div id="apotelesmata"></div>
+
   <script>
+    document.getElementById('pliris').addEventListener('change', function () {
+      const block = document.getElementById('imerominies');
+      block.style.display = this.value === 'part' ? 'block' : 'none';
+    });
+
     function ypologise() {
-      // Εδώ θα προστεθεί η λογική υπολογισμού μισθοδοσίας
       alert("Η λειτουργία υπολογισμού θα προστεθεί σύντομα.");
     }
   </script>

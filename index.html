@@ -2,119 +2,94 @@
 <html lang="el">
 <head>
   <meta charset="UTF-8">
-  <title>ΕΡΓΑΛΕΙΟ ΜΙΣΘΟΔΟΣΙΑΣ PHAEA</title>
+  <title>Εργαλείο Υπολογισμού Μισθοδοσίας PHAEA</title>
   <style>
     body {
       font-family: Arial, sans-serif;
       background-color: #f6f3e9;
-      margin: 40px;
+      padding: 20px;
     }
-    h1 {
-      text-align: center;
-    }
-    .ver {
-      font-size: 0.8em;
-      color: gray;
-    }
-    h2 {
-      margin-top: 40px;
+    h1, h2 {
       color: #333;
     }
-    label {
-      font-weight: bold;
+    label, select, input {
       display: block;
-      margin-top: 20px;
+      margin: 10px 0;
     }
-    select, input {
-      width: 250px;
-      padding: 5px;
-      margin-top: 5px;
+    .disclaimer {
+      background-color: #fff3cd;
+      border-left: 6px solid #ffeeba;
+      padding: 10px;
+      margin-top: 10px;
+      margin-bottom: 30px;
     }
     .container {
       display: flex;
       justify-content: space-between;
-      gap: 40px;
     }
-    .column {
+    .form-section {
       flex: 1;
+      max-width: 55%;
     }
-    .disclaimer {
-      background-color: #fff4cc;
-      padding: 10px 15px;
-      border-left: 4px solid #e0b100;
-      font-size: 0.9em;
-      margin: 20px 0;
+    .table-section {
+      flex: 1;
+      padding-left: 30px;
     }
     table {
       border-collapse: collapse;
-      width: 100%;
       margin-top: 20px;
-      font-size: 0.9em;
+      width: 100%;
+      font-size: 14px;
     }
     th, td {
       border: 1px solid #ccc;
-      padding: 8px;
-      vertical-align: top;
+      padding: 6px 10px;
       text-align: left;
+    }
+    .logo {
+      text-align: center;
+      margin-bottom: 10px;
     }
   </style>
 </head>
 <body>
-
-  <!-- Logo -->
-  <div style="text-align:center; margin-bottom: 20px;">
-    <img src="phaea-logo.png.png" alt="Phaea Logo" style="max-width: 220px;">
+  <div class="logo">
+    <img src="phaea-logo.png.png" alt="PHAEA Logo" width="120">
   </div>
 
-  <h1>ΕΡΓΑΛΕΙΟ ΥΠΟΛΟΓΙΣΜΟΥ ΜΙΣΘΟΔΟΣΙΑΣ PHAEA <span class="ver">v1.1</span></h1>
-  <p><strong>Σύμφωνα με την Π.Κ. 8.4.2025 Τοπική Κλαδική Σύμβαση Ξενοδοχειακών Επιχειρήσεων ν. Ηρακλείου (ΑΠΌ 1/4/2025)</strong></p>
+  <h1>ΕΡΓΑΛΕΙΟ ΥΠΟΛΟΓΙΣΜΟΥ ΜΙΣΘΟΔΟΣΙΑΣ PHAEA <small>v1.1</small></h1>
+  <p><strong>Σύμφωνα με την Π.Κ. 8.4.2025 Τοπική Κλαδική Σύμβαση Ξενοδοχειακών Επιχειρήσεων ν. Ηρακλείου (ΑΠΟ 1/4/2025)</strong></p>
 
   <div class="disclaimer">
-    <strong>Σημείωση:</strong> Το παρόν εργαλείο υπολογίζει μισθοδοσία βάσει της ΣΣΕ Ηρακλείου 2025–2026 (Π.Κ. 8/4/2025) και έχει ενδεικτικό χαρακτήρα. Δεν αποτελεί επίσημη μισθολογική βεβαίωση και δεν υποκαθιστά τις εφαρμοζόμενες διαδικασίες του λογιστηρίου ή του HR.
+    <p><strong>Σημείωση:</strong> Το παρόν εργαλείο υπολογίζει μισθοδοσία βάσει της ΣΣΕ Ηρακλείου 2025–2026 (Π.Κ. 8/4/2025) και έχει ενδεικτικό χαρακτήρα. Δεν αποτελεί επίσημη μισθολογική βεβαίωση και δεν υποκαθιστά τις εφαρμοζόμενες διαδικασίες του λογιστηρίου ή του HR.</p>
     <ul>
       <li>Τα αποτελέσματα ενδέχεται να παρουσιάζουν αποκλίσεις λόγω μεταβλητότητας των φορολογικών (ΦΜΥ) και ασφαλιστικών κρατήσεων κάθε εργαζομένου.</li>
     </ul>
-    Για επίσημα και δεσμευτικά στοιχεία μισθοδοσίας, παρακαλείστε να απευθύνεστε στο Τμήμα Ανθρώπινου Δυναμικού ή στο λογιστήριο της εταιρείας.
+    <p>Για επίσημα και δεσμευτικά στοιχεία μισθοδοσίας, παρακαλείστε να απευθύνεστε στο Τμήμα Ανθρώπινου Δυναμικού ή στο λογιστήριο της εταιρείας.</p>
   </div>
 
-  <h2>Βήμα 1: ΣΤΑΘΕΡΕΣ ΠΑΡΑΓΟΝΤΕΣ</h2>
-  <!-- περιεχόμενο Βήμα 1 + πίνακας -->
+  <div class="container">
+    <div class="form-section">
+      <h2>Βήμα 1: ΣΤΑΘΕΡΕΣ ΠΑΡΑΓΟΝΤΕΣ</h2>
+      <!-- Εδώ θα μπουν ξανά τα dropdowns με επεξηγήσεις όπως πριν -->
+    </div>
+
+    <div class="table-section">
+      <table>
+        <thead>
+          <tr><th>Κατηγορία</th><th>Ειδικότητες</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Α</td><td>Ρεσεψιονίστ, Υπάλληλος κρατήσεων Α’, Θυρωρός Α’, Νυχτοθυρωρός Α’, Μαιτρ, Υπομαίτρ, Κάπταιν, Μπουφετζής, Προϊστάμενος υπνοδωματίων, Ελεγκτής, Ταμπλίστας, Μάγειρας Α’, Υπεύθυνος Ζαχαροπλαστικής, Αρχιτεχνίτης, Αρτοποιός, Αποθηκάριος, PR, Κόπτης κρεάτων</td></tr>
+          <tr><td>Β</td><td>Προϊστάμενος πλυντηρίου, Βοηθός υποδοχής, Υπάλληλος κρατήσεων Β’, Γραφείου, Θυρωρός Β’, Σερβιτόρος τραπεζαρίας/σαλονιού/ορόφων, Θαλαμηπόλος, Μπάρμαν/Μπαρμέιντ, Μάγειρας Β’, Τεχνίτης ζαχαροπλάστης, Φύλακας, Βοηθός προϊσταμένου ορόφων, Κηπουρός, Ηλεκτροτεχνίτης, Οδηγός, Υπάλληλος πωλήσεων, Υπάλληλος spa, Βοηθός αποθηκάριου</td></tr>
+          <tr><td>Γ</td><td>Βοηθός σερβιτόρου, Οροφοκόμος, Βαλές, Θυρωρός υπηρεσίας, Βοηθός θυρωρείου, Βοηθός μπουφέ, Βοηθός εστιατορίου/bar, Βοηθός Αποθήκης, Γκρουμ, Ντόρμαν, Εξωτερικός θυρωρός, Λινοθηκάριος, Μάγειρας Γ’, Βοηθός τεχνίτη ζαχαροπλάστη, Συντηρητής, Καμαριέρα, Καμαριέρης, Βοηθός αρτοποιού</td></tr>
+          <tr><td>Δ</td><td>Πλύντρια, Καθαρίστρια κοινόχρηστων, Λαντζέρης, Ντισκ Τζόκεϋ, Ναυαγοσώστης, Εργάτης αποθήκης, καθαριότητας ακτών/πισίνας, γενικών καθηκόντων</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
 
   <h2>Βήμα 2: ΠΡΑΓΜΑΤΙΚΗ ΑΠΑΣΧΟΛΗΣΗ</h2>
-  <label>Ο μήνας επιλέχθηκε:
-    <input type="month" id="minas">
-  </label>
-
-  <label>Ημέρες σε πρόσληψη:
-    <select id="hmeres_proslipsis">
-      <option value="olokliros">Ολόκληρος Μήνας</option>
-      <option value="meros">Από ... έως ...</option>
-    </select>
-  </label>
-
-  <label>Ημερομηνία που εργάστηκες:
-    <input type="text" id="imeresErgasias" placeholder="π.χ. 15">
-  </label>
-
-  <label>Πόσες Κυριακές:
-    <input type="number" id="kyriakes" value="0">
-  </label>
-
-  <label>Πόσες Αργίες:
-    <input type="number" id="argies" value="0">
-  </label>
-
-  <label>Ώρες Νυχτερινής Εργασίας:
-    <input type="number" id="nychterina" value="0">
-  </label>
-
-  <label>Εργασία με Σπαστό Ωράριο:
-    <select id="diakekommeno">
-      <option value="OXI">Όχι</option>
-      <option value="NAI">Ναι</option>
-    </select>
-    <small>Επιλέξτε Ναι αν εργάζεστε με σπαστό ωράριο που δεν πληροί τις προϋποθέσεις ανάπαυσης – προστίθεται επίδομα 5%.</small>
-  </label>
-
+  <!-- Εδώ συνεχίζεται το δυναμικό περιεχόμενο του βήματος 2 -->
 </body>
 </html>

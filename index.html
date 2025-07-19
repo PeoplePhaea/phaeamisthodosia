@@ -79,56 +79,6 @@
   </div>
 
   <div class="container">
-    <div class="left">
-      <h2>Βήμα 1: ΣΤΑΘΕΡΕΣ ΠΑΡΑΓΟΝΤΕΣ</h2>
-      <label for="category">Κατηγορία:</label>
-      <select id="category">
-        <option>Α</option>
-        <option selected>Β</option>
-        <option>Γ</option>
-        <option>Δ</option>
-      </select>
-      <small>Αντιστοιχίστε την ειδικότητά σας και επιλέξτε την κατηγορία στην οποία ανήκετε</small>
-
-      <label for="experience">Έτη Προϋπηρεσίας (βάσει ενσήμων):</label>
-      <input type="text" id="experience">
-      <small>Μετράτε βάσει ενσήμων. Δεν λαμβάνεται υπόψη η εποχιακή εργασία. Ισχύει και υπολογισμός "νεκρής περιόδου" βάσει σύμβασης.</small>
-
-      <label for="marital">Οικογενειακή Κατάσταση (Έγγαμος / Διαζ. / Μονογονέας):</label>
-      <select id="marital"><option>Όχι</option></select>
-
-      <label for="seasonal">Εποχιακός:</label>
-      <select id="seasonal"><option>Όχι</option></select>
-      <small>Επιλέξτε Ναι αν εργάζεστε εποχιακά</small>
-
-      <label for="dangerous">Ανθυγιεινή Εργασία:</label>
-      <select id="dangerous"><option>Όχι</option></select>
-      <small>Επιλέξτε αν ανήκετε σε μία από τις παρακάτω επιλογές</small>
-
-      <label for="tourism">Τουριστική Εκπαίδευση:</label>
-      <select id="tourism"><option>Καμία</option></select>
-      <small>
-        Το ποσοστό διαφοροποιείται ανάλογα με τον τίτλο σπουδών:
-        <ul>
-          <li>15% → Πτυχιούχοι Ανωτέρων Τουριστικών Σχολών</li>
-          <li>10% → Πτυχιούχοι Μέσων Τουριστικών, ΙΕΚ, Μετεκπαίδευση με πιστοποίηση</li>
-          <li>6% → Ταχύρρυθμη (τουλάχιστον 150 ώρες)</li>
-        </ul>
-      </small>
-
-      <label for="children">Επίδομα Τέκνων:</label>
-      <select id="children"><option>Όχι</option></select>
-      <small>
-        Αν ισχύει μία από τις εξής προϋποθέσεις:
-        <ul>
-          <li>Τουλάχιστον 3 προστατευόμενα τέκνα (50€)</li>
-          <li>Μονογονεϊκή οικογένεια → Επίδομα 80€ εάν έως 18 ετών</li>
-          <li>Τέκνο ΑΜΕΑ</li>
-          <li>Πάνω από 3 τέκνα: Επίδομα 80€ αντί για 50€</li>
-        </ul>
-      </small>
-    </div>
-
     <div class="right">
       <h3>Κατηγορίες & Ειδικότητες</h3>
       <table>
@@ -143,10 +93,66 @@
         </tbody>
       </table>
     </div>
+
+    <div class="left">
+      <h2>Βήμα 1: ΣΤΑΘΕΡΕΣ ΠΑΡΑΓΟΝΤΕΣ</h2>
+      <label>Κατηγορία:</label>
+      <select><option>Α</option><option>Β</option><option>Γ</option><option>Δ</option></select>
+
+      <label>Έτη Προϋπηρεσίας (βάσει ενσήμων):</label>
+      <input type="number">
+
+      <label>Οικογενειακή Κατάσταση (Έγγαμος / Διαζ. / Μονογονέας):</label>
+      <select><option>Όχι</option><option>Ναι</option></select>
+
+      <label>Εποχιακός:</label>
+      <select><option>Όχι</option><option>Ναι</option></select>
+
+      <label>Ανθυγιεινή Εργασία:</label>
+      <select><option>Όχι</option><option>Κουζίνα</option><option>Λάντζα</option><option>Καμαριέρες</option></select>
+
+      <label>Τουριστική Εκπαίδευση:</label>
+      <select><option>Καμία</option><option>Ταχύρρυθμη</option><option>ΙΕΚ/Μέσες</option><option>Ανώτερες</option></select>
+
+      <label>Επίδομα Τέκνων:</label>
+      <select>
+        <option>Όχι</option>
+        <option>Τουλάχιστον 3 Τέκνα</option>
+        <option>Πάνω από 3 Τέκνα</option>
+        <option>Μονογονεϊκή Οικογένεια</option>
+        <option>Τέκνο ΑΜΕΑ</option>
+      </select>
+    </div>
   </div>
 
   <h2>Βήμα 2: ΠΡΑΓΜΑΤΙΚΗ ΑΠΑΣΧΟΛΗΣΗ</h2>
-  <!-- Εδώ θα συνεχίσουμε με τα πεδία απασχόλησης -->
+  <label>Μήνας Αναφοράς:</label>
+  <input type="date">
+
+  <label>Ημέρες σε πρόσληψη:</label>
+  <select>
+    <option>Ολόκληρος Μήνας</option>
+    <option>Από...</option>
+  </select>
+
+  <label>Ημερομηνία που εργάστηκε (αν όχι πλήρη πρόσληψη):</label>
+  <input type="text" placeholder="π.χ. 15">
+
+  <label>Πόσες Κυριακές εργάστηκε:</label>
+  <input type="number">
+
+  <label>Πόσες Αργίες εργάστηκε:</label>
+  <input type="number">
+
+  <label>Ώρες Νυχτερινής Εργασίας:</label>
+  <input type="number">
+
+  <label>Εργασία με Σπαστό Ωράριο:</label>
+  <select>
+    <option>Όχι</option>
+    <option>Ναι</option>
+  </select>
+  <small>Επιλέξτε Ναι αν εργάζεστε με σπαστό ωράριο που δεν πληροί τις προϋποθέσεις ανάπαυσης – προστίθεται επίδομα 5%.</small>
 </body>
 
 </html>

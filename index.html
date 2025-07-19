@@ -45,10 +45,10 @@
       margin: 10px 0 5px;
     }
 
-    select, input {
-      display: block;
-      margin-bottom: 15px;
+    select, input[type="text"], input[type="date"] {
       width: 50%;
+      padding: 5px;
+      margin-bottom: 10px;
     }
 
     table {
@@ -86,7 +86,55 @@
   <div class="container">
     <div class="left">
       <h2>Βήμα 1: ΣΤΑΘΕΡΕΣ ΠΑΡΑΓΟΝΤΕΣ</h2>
-      <!-- Input fields go here -->
+      <label for="category">Κατηγορία:</label>
+      <select id="category">
+        <option>Α</option>
+        <option>Β</option>
+        <option>Γ</option>
+        <option>Δ</option>
+      </select>
+
+      <label for="experience">Έτη Προϋπηρεσίας (βάσει ενσήμων):</label>
+      <input type="text" id="experience">
+
+      <label for="family">Οικογενειακή Κατάσταση (Έγγαμος / Διαζ. / Μονογονέας):</label>
+      <select id="family">
+        <option>Όχι</option>
+        <option>Έγγαμος</option>
+        <option>Διαζευγμένος</option>
+        <option>Μονογονέας</option>
+      </select>
+
+      <label for="seasonal">Εποχιακός:</label>
+      <select id="seasonal">
+        <option>Όχι</option>
+        <option>Ναι</option>
+      </select>
+
+      <label for="hazardous">Ανθυγιεινή Εργασία:</label>
+      <select id="hazardous">
+        <option>Όχι</option>
+        <option>Κουζίνα (10%)</option>
+        <option>Λάντζα (7%)</option>
+        <option>Καμαριέρες/Καθαρίστριες (5%)</option>
+      </select>
+
+      <label for="tourism">Τουριστική Εκπαίδευση:</label>
+      <select id="tourism">
+        <option>Καμία</option>
+        <option>Ανώτερη (15%)</option>
+        <option>Μέση/ΙΕΚ (10%)</option>
+        <option>Ταχύρρυθμη (6%)</option>
+      </select>
+
+      <label for="children">Επίδομα Τέκνων:</label>
+      <select id="children">
+        <option>Όχι</option>
+        <option>Τουλάχιστον 3 τέκνα (50€)</option>
+        <option>3 τέκνα+ (80€)</option>
+        <option>Μονογονεϊκή Οικογένεια</option>
+        <option>Τέκνο ΑΜΕΑ</option>
+      </select>
     </div>
 
     <div class="right">
@@ -106,7 +154,32 @@
   </div>
 
   <h2>Βήμα 2: ΠΡΑΓΜΑΤΙΚΗ ΑΠΑΣΧΟΛΗΣΗ</h2>
-  <!-- Step 2 inputs go here -->
+  <label for="month">Μήνας Αναφοράς:</label>
+  <input type="date" id="month">
+
+  <label for="days">Ημέρες σε πρόσληψη:</label>
+  <select id="days">
+    <option>Ολόκληρος Μήνας</option>
+    <option>Μερικός</option>
+  </select>
+
+  <label for="start">Ημερομηνία που εργάστηκε (αν όχι πλήρη πρόσληψη):</label>
+  <input type="text" id="start" placeholder="π.χ. 15">
+
+  <label for="sundays">Πόσες Κυριακές εργάστηκε:</label>
+  <input type="text" id="sundays">
+
+  <label for="holidays">Πόσες Αργίες:</label>
+  <input type="text" id="holidays">
+
+  <label for="night">Ώρες Νυχτερινής Εργασίας:</label>
+  <input type="text" id="night">
+
+  <label for="split">Εργασία με Σπαστό Ωράριο:</label>
+  <select id="split">
+    <option>Όχι</option>
+    <option>Ναι</option>
+  </select>
 
 </body>
 

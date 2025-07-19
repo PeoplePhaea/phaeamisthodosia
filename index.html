@@ -2,230 +2,119 @@
 <html lang="el">
 <head>
   <meta charset="UTF-8">
-  <title>ΕΡΓΑΛΕΙΟ ΥΠΟΛΟΓΙΣΜΟΥ ΜΙΣΘΟΔΟΣΙΑΣ PHAEA v1.4</title>
+  <title>ΕΡΓΑΛΕΙΟ ΜΙΣΘΟΔΟΣΙΑΣ PHAEA</title>
   <style>
     body {
       font-family: Arial, sans-serif;
-      padding: 20px;
-      background: #f6f3e9;
+      background-color: #f6f3e9;
+      margin: 40px;
     }
-
-    label, select, input {
+    h1 {
+      text-align: center;
+    }
+    .ver {
+      font-size: 0.8em;
+      color: gray;
+    }
+    h2 {
+      margin-top: 40px;
+      color: #333;
+    }
+    label {
+      font-weight: bold;
       display: block;
-      margin: 10px 0;
-      width: 100%;
-      max-width: 400px;
+      margin-top: 20px;
     }
-
+    select, input {
+      width: 250px;
+      padding: 5px;
+      margin-top: 5px;
+    }
+    .container {
+      display: flex;
+      justify-content: space-between;
+      gap: 40px;
+    }
+    .column {
+      flex: 1;
+    }
+    .disclaimer {
+      background-color: #fff4cc;
+      padding: 10px 15px;
+      border-left: 4px solid #e0b100;
+      font-size: 0.9em;
+      margin: 20px 0;
+    }
     table {
       border-collapse: collapse;
-      margin-top: 20px;
       width: 100%;
-      max-width: 1000px;
-    }
-
-    td, th {
-      border: 1px solid #ccc;
-      padding: 8px 12px;
-      text-align: left;
-      vertical-align: top;
-    }
-
-    h1, h2 {
-      color: #2c3e50;
-    }
-
-    h1 {
-      font-size: 22px;
-      margin-bottom: 5px;
-    }
-
-    .section {
-      margin-bottom: 40px;
-    }
-
-    .disclaimer {
-      font-size: 13px;
-      color: #555;
-      background: #f6f3e9;
-      padding: 12px;
-      border-left: 4px solid #f1c40f;
       margin-top: 20px;
-      margin-bottom: 30px;
+      font-size: 0.9em;
     }
-
-    .hint {
-      font-size: 12px;
-      color: #666;
-      margin-bottom: 10px;
-      line-height: 1.4;
-    }
-
-    .flex-container {
-      display: flex;
-      flex-direction: row;
-      flex-wrap: wrap;
-      gap: 40px;
-      align-items: flex-start;
-    }
-
-    .half {
-      flex: 1;
-      min-width: 350px;
-    }
-
-    @media (max-width: 900px) {
-      .flex-container {
-        flex-direction: column;
-      }
+    th, td {
+      border: 1px solid #ccc;
+      padding: 8px;
+      vertical-align: top;
+      text-align: left;
     }
   </style>
 </head>
 <body>
-  <h1>ΕΡΓΑΛΕΙΟ ΥΠΟΛΟΓΙΣΜΟΥ ΜΙΣΘΟΔΟΣΙΑΣ PHAEA <span style="font-size:14px;color:#888">v1.4</span></h1>
+
+  <!-- Logo -->
+  <div style="text-align:center; margin-bottom: 20px;">
+    <img src="phaea-logo.png.png" alt="Phaea Logo" style="max-width: 220px;">
+  </div>
+
+  <h1>ΕΡΓΑΛΕΙΟ ΥΠΟΛΟΓΙΣΜΟΥ ΜΙΣΘΟΔΟΣΙΑΣ PHAEA <span class="ver">v1.1</span></h1>
   <p><strong>Σύμφωνα με την Π.Κ. 8.4.2025 Τοπική Κλαδική Σύμβαση Ξενοδοχειακών Επιχειρήσεων ν. Ηρακλείου (ΑΠΌ 1/4/2025)</strong></p>
 
   <div class="disclaimer">
-    <strong>Σημείωση:</strong> Το παρόν εργαλείο υπολογισμού μισθοδοσίας βασίζεται στη ΣΣΕ Ηρακλείου 2025–2026 (Π.Κ. 8/4/2025) και έχει ενδεικτικό χαρακτήρα. Δεν αποτελεί επίσημη μισθολογική βεβαίωση και δεν υποκαθιστά τις εφαρμοζόμενες διαδικασίες του λογιστηρίου ή του HR.
+    <strong>Σημείωση:</strong> Το παρόν εργαλείο υπολογίζει μισθοδοσία βάσει της ΣΣΕ Ηρακλείου 2025–2026 (Π.Κ. 8/4/2025) και έχει ενδεικτικό χαρακτήρα. Δεν αποτελεί επίσημη μισθολογική βεβαίωση και δεν υποκαθιστά τις εφαρμοζόμενες διαδικασίες του λογιστηρίου ή του HR.
     <ul>
-      <li>Τα αποτελέσματα ενδέχεται να παρουσιάζουν αποκλίσεις λόγω <strong>μεταβλητότητας των φορολογικών (ΦΜΥ) και ασφαλιστικών κρατήσεων κάθε εργαζομένου</strong>.</li>
+      <li>Τα αποτελέσματα ενδέχεται να παρουσιάζουν αποκλίσεις λόγω μεταβλητότητας των φορολογικών (ΦΜΥ) και ασφαλιστικών κρατήσεων κάθε εργαζομένου.</li>
     </ul>
-    Για επίσημη ενημέρωση και δεσμευτικά στοιχεία μισθοδοσίας, παρακαλείστε να απευθυνθείτε στο Τμήμα Ανθρώπινου Δυναμικού ή στο λογιστήριο της εταιρείας.
+    Για επίσημα και δεσμευτικά στοιχεία μισθοδοσίας, παρακαλείστε να απευθύνεστε στο Τμήμα Ανθρώπινου Δυναμικού ή στο λογιστήριο της εταιρείας.
   </div>
 
-  <div class="section">
-    <h2>Βήμα 1: ΣΤΑΘΕΡΕΣ ΠΑΡΑΓΟΝΤΕΣ</h2>
-    <div class="flex-container">
-      <div class="half">
-        <label>Κατηγορία:
-          <span class="hint">Εντοπίστε την ειδικότητά σας στον πίνακα δεξιά και επιλέξτε την κατηγορία στην οποία ανήκει.</span>
-          <select id="katigoria">
-            <option value="A">Α</option>
-            <option value="B" selected>Β</option>
-            <option value="G">Γ</option>
-            <option value="D">Δ</option>
-          </select>
-        </label>
-        <label>Έτη Προϋπηρεσίας:
-          <span class="hint">Υπολογίζονται με βάση τα συνολικά ένσημα. Προσμετράται και η "νεκρή περίοδος" (διάστημα χωρίς εργασία) εφόσον μεσολάβησε διάστημα μέχρι 3 μήνες μεταξύ δύο σεζόν στον ίδιο εργοδότη.</span>
-          <input type="number" id="eti" min="0" value="0">
-        </label>
-        <label>Οικογενειακή Κατάσταση (Έγγαμος / Διαζ. / Μονογονέας):
-          <span class="hint">Επιλέξτε "Ναι" για να προστεθεί το επίδομα οικογενειακών βαρών 10%.</span>
-          <select id="oikKat">
-            <option value="OXI">Όχι</option>
-            <option value="NAI">Ναι</option>
-          </select>
-        </label>
-        <label>Εποχιακός:
-          <span class="hint">Επιλέξτε "Ναι" αν εργάζεστε εποχιακά – εφαρμόζεται επίδομα 10%.</span>
-          <select id="epoxiakos">
-            <option value="OXI">Όχι</option>
-            <option value="NAI">Ναι</option>
-          </select>
-        </label>
-        <label>Ανθυγιεινή Εργασία:
-          <span class="hint">Επιλέξτε αν ανήκετε σε μία από τις παρακάτω επιλογές: Κουζίνα (10%), Λάντζα (7%), Καμαριέρες/Καθαρίστριες (5%).</span>
-          <select id="anthyg">
-            <option value="OXI">Όχι</option>
-            <option value="koyzina">Κουζίνα</option>
-            <option value="lantza">Λάντζα</option>
-            <option value="kamariera">Καμαριέρα / Καθαρίστρια</option>
-          </select>
-        </label>
-        <label>Τουριστική Εκπαίδευση:
-          <span class="hint">Το ποσοστό διαφοροποιείται ανάλογα με τον τίτλο σπουδών:<br>
-          <strong>15%</strong> → Για πτυχιούχους Ανωτέρων Τουριστικών Σχολών<br>
-          <strong>10%</strong> → Για πτυχιούχους Μέσων Τουριστικών Σχολών, αποφοίτους σχολών μετεκπαίδευσης και Ι.Ε.Κ. Ο.Ε.Ε.Κ. με επιτυχή πιστοποίηση<br>
-          <strong>6%</strong> → Για αποφοίτους Ταχύρρυθμης Εκπαίδευσης (με βεβαίωση παρακολούθησης τουλάχιστον 150 ωρών)</span>
-          <select id="touristiki">
-            <option value="none">Καμία</option>
-            <option value="taxyrythmi">Ταχύρρυθμη</option>
-            <option value="mesi">Μέση</option>
-            <option value="anotati">Ανώτατη</option>
-          </select>
-        </label>
-        <label>Επίδομα Τέκνων:
-  <span class="hint">Αν ισχύει μία από τις παρακάτω προϋποθέσεις, προστίθεται 50€ (ή 80€ για πάνω από 3 προστατευόμενα τέκνα):
-    <ul style="margin-top: 5px; padding-left: 18px;">
-      <li>Τουλάχιστον 3 προστατευόμενα τέκνα</li>
-      <li>Πάνω από 3 προστατευόμενα τέκνα → 80€</li>
-      <li>Μονογονεϊκή οικογένεια (ασκών την επιμέλεια) έως 18 ετών</li>
-      <li>Τέκνο ΑΜΕΑ</li>
-    </ul>
-  </span>
-  <select id="paidia">
-    <option value="none">Καμία</option>
-    <option value="3">Τουλάχιστον 3 Τέκνα</option>
-    <option value="3plus">Πάνω από 3 Τέκνα</option>
-    <option value="monogoneiki">Μονογονεϊκή Οικογένεια</option>
-    <option value="amea">Τέκνο ΑΜΕΑ</option>
-  </select>
-</label>
-      </div>
+  <h2>Βήμα 1: ΣΤΑΘΕΡΕΣ ΠΑΡΑΓΟΝΤΕΣ</h2>
+  <!-- περιεχόμενο Βήμα 1 + πίνακας -->
 
-      <div class="half">
-        <table>
-          <thead>
-            <tr><th>Κατηγορία</th><th>Ειδικότητες</th></tr>
-          </thead>
-          <tbody>
-            <tr><td>Α</td><td>Ρεσεψιονίστ, Υπάλληλος κρατήσεων Α', Θυρωρός Α', Νυχτοθυρωρός Α', Μαιτρ, Υπομαίτρ, Κάπταιν, Μπουφετζής, Προϊστάμενος υπνοδωματίων, Ελεγκτής, Ταμπλίστας, Μάγειρας Α', Υπεύθυνος Ζαχαροπλαστικής, Αρχιτεχνίτης, Αρτοποιός, Αποθηκάριος, PR, Κόπτης κρεάτων</td></tr>
-            <tr><td>Β</td><td>Προϊστάμενος πλυντηρίου, Βοηθός υποδοχής, Υπάλληλος κρατήσεων Β', Γραφείου, Θυρωρός Β', Σερβιτόρος τραπεζαρίας/σαλονιού/ορόφων, Θαλαμηπόλος, Μπάρμαν/Μπαρμέιντ, Μάγειρας Β', Τεχνίτης ζαχαροπλάστης, Φύλακας, Βοηθός προϊσταμένου ορόφων, Κηπουρός, Ηλεκτροτεχνίτης, Οδηγός, Υπάλληλος πωλήσεων, Υπάλληλος spa, Βοηθός αποθηκάριου</td></tr>
-            <tr><td>Γ</td><td>Βοηθός σερβιτόρου, Οροφοκόμος, Βαλές, Θυρωρός υπηρεσίας, Βοηθός θυρωρείου, Βοηθός μπουφέ, Βοηθός εστιατορίου/bar, Βοηθός λινοθήκης, Γκρουμ, Ντόρμαν, Εξωτερικός θυρωρός, Λινοθηκάριος, Μάγειρας Γ', Βοηθός τεχνίτη ζαχαροπλάστη, Συντηρητής, Καμαριέρα, Καμαριέρης, Βοηθός αρτοποιού</td></tr>
-            <tr><td>Δ</td><td>Πλύστρια, Καθαρίστρια κοινόχρηστων, Λαντζέρης, Ντισκ Τζόκεϋ, Ναυαγοσώστης, Εργάτης αποθήκης, καθαριότητας ακτών/πισίνας, γενικών καθηκόντων</td></tr>
-          </tbody>
-        </table>
-      </div>
-    </div>
-  </div>
+  <h2>Βήμα 2: ΠΡΑΓΜΑΤΙΚΗ ΑΠΑΣΧΟΛΗΣΗ</h2>
+  <label>Ο μήνας επιλέχθηκε:
+    <input type="month" id="minas">
+  </label>
 
-  <div class="section">
-    <h2>Βήμα 2: ΠΡΑΓΜΑΤΙΚΗ ΑΠΑΣΧΟΛΗΣΗ</h2>
-    <label>Ο μήνας επιλέχθηκε:
-      <input type="month" id="minas">
-    </label>
-    <label>Ήμερες σε πρόσληψη:
-      <select id="pliris">
-        <option value="full">Ολόκληρος Μήνας</option>
-        <option value="part">Από... έως...</option>
-      </select>
-    </label>
-    <div id="imerominies" style="display: none;">
-      <label>Από:
-        <input type="date" id="apo">
-      </label>
-      <label>Έως:
-        <input type="date" id="eos">
-      </label>
-    </div>
-    <label>Ημερομίσθια που εργάστηκες:
-      <input type="number" id="imeres" min="0">
-    </label>
-    <label>Πόσες Κυριακές:
-      <input type="number" id="kyriakes" min="0">
-    </label>
-    <label>Πόσες Αργίες:
-      <input type="number" id="argies" min="0">
-    </label>
-    
-<label>Διακεκομμένο Ωράριο:
-  <span class="hint">Επιλέξτε Ναι αν εργάζεστε με σπαστό ωράριο που δεν πληροί τις προϋποθέσεις ανάπαυσης – προστίθεται επίδομα 5%.</span>
-  <select id="diakek">
-    <option value="OXI">Όχι</option>
-    <option value="NAI">Ναι</option>
-  </select>
-</label>
-    <label>Κυριακές που ήταν 6η ημέρα:
-      <input type="number" id="k6_kyriaki" min="0">
-    </label>
-    <label>Νυχτερινά σε Κυριακή:
-      <input type="number" id="nychta_kyriaki" min="0">
-    </label>
-    <label>Νυχτερινά σε Κυριακή + 6η:
-      <input type="number" id="nychta_kyriaki_6i" min="0">
-    </label>
-  </div>
+  <label>Ημέρες σε πρόσληψη:
+    <select id="hmeres_proslipsis">
+      <option value="olokliros">Ολόκληρος Μήνας</option>
+      <option value="meros">Από ... έως ...</option>
+    </select>
+  </label>
+
+  <label>Ημερομηνία που εργάστηκες:
+    <input type="text" id="imeresErgasias" placeholder="π.χ. 15">
+  </label>
+
+  <label>Πόσες Κυριακές:
+    <input type="number" id="kyriakes" value="0">
+  </label>
+
+  <label>Πόσες Αργίες:
+    <input type="number" id="argies" value="0">
+  </label>
+
+  <label>Ώρες Νυχτερινής Εργασίας:
+    <input type="number" id="nychterina" value="0">
+  </label>
+
+  <label>Εργασία με Σπαστό Ωράριο:
+    <select id="diakekommeno">
+      <option value="OXI">Όχι</option>
+      <option value="NAI">Ναι</option>
+    </select>
+    <small>Επιλέξτε Ναι αν εργάζεστε με σπαστό ωράριο που δεν πληροί τις προϋποθέσεις ανάπαυσης – προστίθεται επίδομα 5%.</small>
+  </label>
 
 </body>
 </html>

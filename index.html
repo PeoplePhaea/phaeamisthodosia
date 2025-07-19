@@ -13,8 +13,8 @@
 
     img.logo {
       display: block;
-      margin: 0 auto;
-      height: 100px;
+      margin: 0 auto 20px;
+      height: 80px;
     }
 
     h1 {
@@ -66,7 +66,7 @@
 
 <body>
   <img src="phaea-logo.png.png" alt="PHAEA Logo" class="logo">
-  <h1>ΕΡΓΑΛΕΙΟ ΥΠΟΛΟΓΙΣΜΟΥ ΜΙΣΘΟΔΟΣΙΑΣ PHAEA <span style="font-size: 0.7em;">v2.0</span></h1>
+  <h1>ΕΡΓΑΛΕΙΟ ΥΠΟΛΟΓΙΣΜΟΥ ΜΙΣΘΟΔΟΣΙΑΣ PHAEA <span style="font-size: 0.7em;">v2.1</span></h1>
 
   <p><strong>Σύμφωνα με την Π.Κ. 8.4.2025 Τοπική Κλαδική Σύμβαση Ξενοδοχειακών Επιχειρήσεων ν. Ηρακλείου (ΑΠΟ 1/4/2025)</strong></p>
 
@@ -79,6 +79,53 @@
   </div>
 
   <div class="container">
+    <div class="left">
+      <h2>Βήμα 1: ΣΤΑΘΕΡΕΣ ΠΑΡΑΓΟΝΤΕΣ</h2>
+      <label>Κατηγορία:
+        <select><option>Α</option><option>Β</option><option>Γ</option><option>Δ</option></select>
+      </label>
+      <small>Αντιστοιχίστε την ειδικότητά σας και επιλέξτε την κατηγορία στην οποία ανήκετε</small>
+
+      <label>Έτη Προϋπηρεσίας (βάσει ενσήμων):
+        <input type="text" placeholder="0">
+      </label>
+      <small>Μετράμε βάσει ενσήμων. Δεν λαμβάνεται υπόψη η εποχική εργασία. Ισχύει και υπολογισμός "νεκρής περιόδου" βάσει σύμβασης.</small>
+
+      <label>Οικογενειακή Κατάσταση (Έγγαμος / Διαζ. / Μονογονέας):
+        <select><option>Όχι</option><option>Έγγαμος</option><option>Διαζευγμένος</option><option>Μονογονέας</option></select>
+      </label>
+
+      <label>Εποχιακός:
+        <select><option>Όχι</option><option>Ναι</option></select>
+      </label>
+      <small>Επιλέξτε Ναι αν εργάζεστε εποχιακά</small>
+
+      <label>Ανθυγιεινή Εργασία:
+        <select><option>Όχι</option><option>Κουζίνα (10%)</option><option>Λάντζα (7%)</option><option>Καθαρίστριες (5%)</option></select>
+      </label>
+      <small>Επιλέξτε αν ανήκετε σε μία από τις παραπάνω επιλογές</small>
+
+      <label>Τουριστική Εκπαίδευση:
+        <select><option>Καμία</option><option>15%</option><option>10%</option><option>6%</option></select>
+      </label>
+      <small>
+        Το ποσοστό διαφοροποιείται ανάλογα με τον τίτλο σπουδών:<br>
+        • 15% → Πτυχιούχοι Ανωτέρων Τουριστικών Σχολών<br>
+        • 10% → Πτυχιούχοι ΜΤΣ / ΙΕΚ / Μετεκπαίδευση με πιστοποίηση<br>
+        • 6% → Ταχύρρυθμη (τουλάχιστον 150 ώρες)
+      </small>
+
+      <label>Επίδομα Τέκνων:
+        <select><option>Όχι</option><option>Τουλάχιστον 3 Τέκνα</option><option>3 Τέκνα +</option><option>Μονογονεϊκή Οικογένεια</option><option>Τέκνο ΑΜΕΑ</option></select>
+      </label>
+      <small>
+        • Τουλάχιστον 3 προστατευόμενα τέκνα (50€)<br>
+        • Πάνω από 3 τέκνα → Επίδομα 80€ αντί για 50€<br>
+        • Μονογονεϊκή οικογένεια (ασκών/ούσα την επιμέλεια)<br>
+        • Τέκνο ΑΜΕΑ
+      </small>
+    </div>
+
     <div class="right">
       <h3>Κατηγορίες & Ειδικότητες</h3>
       <table>
@@ -93,66 +140,36 @@
         </tbody>
       </table>
     </div>
-
-    <div class="left">
-      <h2>Βήμα 1: ΣΤΑΘΕΡΕΣ ΠΑΡΑΓΟΝΤΕΣ</h2>
-      <label>Κατηγορία:</label>
-      <select><option>Α</option><option>Β</option><option>Γ</option><option>Δ</option></select>
-
-      <label>Έτη Προϋπηρεσίας (βάσει ενσήμων):</label>
-      <input type="number">
-
-      <label>Οικογενειακή Κατάσταση (Έγγαμος / Διαζ. / Μονογονέας):</label>
-      <select><option>Όχι</option><option>Ναι</option></select>
-
-      <label>Εποχιακός:</label>
-      <select><option>Όχι</option><option>Ναι</option></select>
-
-      <label>Ανθυγιεινή Εργασία:</label>
-      <select><option>Όχι</option><option>Κουζίνα</option><option>Λάντζα</option><option>Καμαριέρες</option></select>
-
-      <label>Τουριστική Εκπαίδευση:</label>
-      <select><option>Καμία</option><option>Ταχύρρυθμη</option><option>ΙΕΚ/Μέσες</option><option>Ανώτερες</option></select>
-
-      <label>Επίδομα Τέκνων:</label>
-      <select>
-        <option>Όχι</option>
-        <option>Τουλάχιστον 3 Τέκνα</option>
-        <option>Πάνω από 3 Τέκνα</option>
-        <option>Μονογονεϊκή Οικογένεια</option>
-        <option>Τέκνο ΑΜΕΑ</option>
-      </select>
-    </div>
   </div>
 
   <h2>Βήμα 2: ΠΡΑΓΜΑΤΙΚΗ ΑΠΑΣΧΟΛΗΣΗ</h2>
-  <label>Μήνας Αναφοράς:</label>
-  <input type="date">
+  <label>Μήνας Αναφοράς:
+    <input type="date">
+  </label>
 
-  <label>Ημέρες σε πρόσληψη:</label>
-  <select>
-    <option>Ολόκληρος Μήνας</option>
-    <option>Από...</option>
-  </select>
+  <label>Ημέρες σε πρόσληψη:
+    <select><option>Ολόκληρος Μήνας</option><option>Μερικός</option></select>
+  </label>
 
-  <label>Ημερομηνία που εργάστηκε (αν όχι πλήρη πρόσληψη):</label>
-  <input type="text" placeholder="π.χ. 15">
+  <label>Ημερομηνία που εργάστηκε (αν όχι πλήρη πρόσληψη):
+    <input type="text" placeholder="π.χ. 15">
+  </label>
 
-  <label>Πόσες Κυριακές εργάστηκε:</label>
-  <input type="number">
+  <label>Πόσες Κυριακές εργάστηκε:
+    <input type="number">
+  </label>
 
-  <label>Πόσες Αργίες εργάστηκε:</label>
-  <input type="number">
+  <label>Πόσες Αργίες:
+    <input type="number">
+  </label>
 
-  <label>Ώρες Νυχτερινής Εργασίας:</label>
-  <input type="number">
+  <label>Ώρες Νυχτερινής Εργασίας:
+    <input type="number">
+  </label>
 
-  <label>Εργασία με Σπαστό Ωράριο:</label>
-  <select>
-    <option>Όχι</option>
-    <option>Ναι</option>
-  </select>
+  <label>Εργασία με Σπαστό Ωράριο:
+    <select><option>Όχι</option><option>Ναι</option></select>
+  </label>
   <small>Επιλέξτε Ναι αν εργάζεστε με σπαστό ωράριο που δεν πληροί τις προϋποθέσεις ανάπαυσης – προστίθεται επίδομα 5%.</small>
 </body>
-
 </html>

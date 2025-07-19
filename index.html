@@ -146,12 +146,12 @@
           </select>
         </label>
         <label>Διακεκομμένο Ωράριο:
-          <span class="hint">Επιλέξτε "Ναι" αν εργάζεστε με σπαστό ωράριο – προστίθεται επίδομα 5%.</span>
-          <select id="diakek">
-            <option value="OXI">Όχι</option>
-            <option value="NAI">Ναι</option>
-          </select>
-        </label>
+  <span class="hint">Επιλέξτε Ναι αν εργάζεστε με σπαστό ωράριο που δεν πληροί τις προϋποθέσεις ανάπαυσης – προστίθεται επίδομα 5%.</span>
+  <select id="diakek">
+    <option value="OXI">Όχι</option>
+    <option value="NAI">Ναι</option>
+  </select>
+</label>
         <label>Παιδιά / Μονογονεϊκή / ΑΜΕΑ:
           <span class="hint">Αν ισχύει μία από τις εξής προϋποθέσεις: τουλάχιστον 3 τέκνα, μονογονεϊκή οικογένεια ή τέκνο ΑΜΕΑ έως 18 ετών – προστίθεται 50€.</span>
           <select id="paidia">
@@ -205,9 +205,14 @@
     <label>Πόσες Αργίες:
       <input type="number" id="argies" min="0">
     </label>
-    <label>Πόσες Νυχτερινές Ώρες:
-      <input type="number" id="nychta" min="0">
-    </label>
+    
+<label>Διακεκομμένο Ωράριο:
+  <span class="hint">Επιλέξτε Ναι αν εργάζεστε με σπαστό ωράριο που δεν πληροί τις προϋποθέσεις ανάπαυσης – προστίθεται επίδομα 5%.</span>
+  <select id="diakek">
+    <option value="OXI">Όχι</option>
+    <option value="NAI">Ναι</option>
+  </select>
+</label>
     <label>Κυριακές που ήταν 6η ημέρα:
       <input type="number" id="k6_kyriaki" min="0">
     </label>

@@ -2,66 +2,76 @@
 <html lang="el">
 <head>
   <meta charset="UTF-8">
-  <title>ΕΡΓΑΛΕΙΟ ΥΠΟΛΟΓΙΣΜΟΥ ΜΙΣΘΟΔΟΣΙΑΣ PHĀEA</title>
+  <title>ΕΡΓΑΛΕΙΟ ΥΠΟΛΟΓΙΣΜΟΥ ΜΙΣΘΟΔΟΣΙΑΣ PHAEA v1.2</title>
   <style>
     body {
       font-family: Arial, sans-serif;
       background-color: #f6f3e9;
       padding: 20px;
     }
-    h1, h2 {
-      color: #333;
+    img.logo {
+      display: block;
+      margin: 0 auto;
+      height: 60px;
+    }
+    h1 {
+      text-align: center;
+      margin-top: 10px;
     }
     .disclaimer {
       background-color: #fff3cd;
-      padding: 15px;
       border-left: 6px solid #ffeeba;
-      margin: 15px 0;
+      padding: 10px 20px;
+      margin: 20px 0;
       font-size: 14px;
     }
-    label, select, input {
-      display: block;
-      margin: 10px 0;
-    }
-    .flex-row {
+    .section {
       display: flex;
       justify-content: space-between;
       align-items: flex-start;
+      flex-wrap: wrap;
     }
-    .left-column, .right-column {
+    .left, .right {
       width: 48%;
+    }
+    label {
+      font-weight: bold;
+      display: block;
+      margin-top: 15px;
+    }
+    input, select {
+      width: 100%;
+      padding: 6px;
+      margin-top: 5px;
+    }
+    .note {
+      font-size: 13px;
+      color: #333;
+      margin-top: 5px;
     }
     table {
       border-collapse: collapse;
       width: 100%;
-      margin-top: 10px;
-    }
-    th, td {
-      border: 1px solid #ccc;
-      padding: 8px;
-      text-align: left;
+      margin-top: 15px;
       font-size: 14px;
     }
-    .logo {
-      text-align: center;
-      margin-bottom: 10px;
+    th, td {
+      border: 1px solid #aaa;
+      padding: 8px;
+      text-align: left;
     }
-    .logo img {
-      max-width: 180px;
-    }
-    .note {
-      font-size: 12px;
-      color: #333;
+    #step2 {
+      margin-top: 40px;
     }
   </style>
 </head>
 <body>
-  <div class="logo">
-    <img src="phaea-logo.png.png" alt="PHĀEA logo">
-  </div>
 
-  <h1>ΕΡΓΑΛΕΙΟ ΥΠΟΛΟΓΙΣΜΟΥ ΜΙΣΘΟΔΟΣΙΑΣ PHĀEA <small>v1.1</small></h1>
-  <p><strong>Σύμφωνα με την Π.Κ. 8.4.2025 Τοπική Κλαδική Σύμβαση Ξενοδοχειακών Επιχειρήσεων ν. Ηρακλείου (ΑΠΌ 1/4/2025)</strong></p>
+  <img src="Images/phaea-logo.png" alt="PHAEA Logo" class="logo">
+
+  <h1>ΕΡΓΑΛΕΙΟ ΥΠΟΛΟΓΙΣΜΟΥ ΜΙΣΘΟΔΟΣΙΑΣ PHAEA <span style="font-size: 14px;">v1.2</span></h1>
+
+  <p><strong>Σύμφωνα με την Π.Κ. 8.4.2025 Τοπική Κλαδική Σύμβαση Ξενοδοχειακών Επιχειρήσεων ν. Ηρακλείου (ΑΠΟ 1/4/2025)</strong></p>
 
   <div class="disclaimer">
     <strong>Σημείωση:</strong> Το παρόν εργαλείο υπολογίζει μισθοδοσία βάσει της ΣΣΕ Ηρακλείου 2025–2026 (Π.Κ. 8/4/2025) και έχει ενδεικτικό χαρακτήρα. Δεν αποτελεί επίσημη μισθολογική βεβαίωση και δεν υποκαθιστά τις εφαρμοζόμενες διαδικασίες του λογιστηρίου ή του HR.
@@ -71,84 +81,96 @@
     Για επίσημα και δεσμευτικά στοιχεία μισθοδοσίας, παρακαλείστε να απευθύνεστε στο Τμήμα Ανθρώπινου Δυναμικού ή στο λογιστήριο της εταιρείας.
   </div>
 
-  <div class="flex-row">
-    <div class="right-column">
-      <h2>Κατηγορίες & Ειδικότητες</h2>
+  <div class="section">
+    <div class="left">
+      <h2>Βήμα 1: ΣΤΑΘΕΡΕΣ ΠΑΡΑΓΟΝΤΕΣ</h2>
+
+      <label for="katigoria">Κατηγορία:</label>
+      <select id="katigoria">
+        <option>Α</option>
+        <option selected>Β</option>
+        <option>Γ</option>
+        <option>Δ</option>
+      </select>
+      <div class="note">Αντιστοιχίστε την ειδικότητά σας και επιλέξτε την κατηγορία στην οποία ανήκετε</div>
+
+      <label for="eti">Έτη Προϋπηρεσίας:</label>
+      <input type="number" id="eti" min="0" value="0">
+      <div class="note">Μετράει βάσει ενσήμων. Δεν λαμβάνεται υπόψη η εποχιακή εργασία. Ισχύει και υπολογισμός "νεκρής περιόδου" βάσει σύμβασης.</div>
+
+      <label for="oikogKat">Οικογενειακή Κατάσταση (Έγγαμος / Διαζ. / Μονογονέας):</label>
+      <select id="oikogKat">
+        <option>Όχι</option>
+        <option>Ναι</option>
+      </select>
+
+      <label for="epoxiakos">Εποχιακός:</label>
+      <select id="epoxiakos">
+        <option>Όχι</option>
+        <option>Ναι</option>
+      </select>
+      <div class="note">Επιλέξτε Ναι αν εργάζεστε εποχιακά</div>
+
+      <label for="anthygieino">Ανθυγιεινή Εργασία:</label>
+      <select id="anthygieino">
+        <option>Όχι</option>
+        <option>Κουζίνα</option>
+        <option>Λάντζα</option>
+        <option>Καμαριέρες/Καθαρίστριες</option>
+      </select>
+      <div class="note">Επιλέξτε αν ανήκετε σε μία από τις παραπάνω επιλογές</div>
+
+      <label for="tourism">Τουριστική Εκπαίδευση:</label>
+      <select id="tourism">
+        <option>Καμία</option>
+        <option>Ταχύρρυθμη</option>
+        <option>Μέση</option>
+        <option>Ανώτατη</option>
+      </select>
+      <div class="note">
+        Το ποσοστό διαφοροποιείται ανάλογα με τον τίτλο σπουδών:<br>
+        • 15% → Πτυχίο Ανωτέρων Τουριστικών Σχολών<br>
+        • 10% → Μέσες Σχολές, ΙΕΚ, Μετεκπαίδευση με πιστοποίηση<br>
+        • 6% → Ταχύρρυθμη (τουλάχιστον 150 ώρες)
+      </div>
+
+      <label for="epidomaPaidion">Επίδομα Τέκνων:</label>
+      <select id="epidomaPaidion">
+        <option>Όχι</option>
+        <option>Τουλάχιστον 3 Τέκνα</option>
+        <option>Πάνω από 3 Τέκνα</option>
+        <option>Μονογονεϊκή Οικογένεια</option>
+        <option>Τέκνο ΑΜΕΑ</option>
+      </select>
+      <div class="note">
+        Αν ισχύει μία από τις εξής προϋποθέσεις:<br>
+        • Τουλάχιστον 3 προστατευόμενα τέκνα (50€)<br>
+        • Πάνω από 3 τέκνα → Επίδομα 80€ αντί για 50€<br>
+        • Μονογονεϊκή οικογένεια (ασκών την επιμέλεια) έως 18 ετών<br>
+        • Τέκνο ΑΜΕΑ
+      </div>
+    </div>
+
+    <div class="right">
+      <h3>Κατηγορίες & Ειδικότητες</h3>
       <table>
         <thead>
           <tr><th>Κατηγορία</th><th>Ειδικότητες</th></tr>
         </thead>
         <tbody>
-          <tr><td>Α</td><td>Ρεσεψιονίστ, Υπάλληλος κρατήσεων Α΄, Θυρωρός Α΄, Νυχτοθυρωρός Α΄, Μaitre, Υπομαίτρ, Κάπταιν, Μπουφετζής, Προϊστάμενος υποδοχωματίων, Ελεγκτής, Ταμπλίστας, Μάγειρας Α΄, Υπεύθυνος Ζαχαροπλαστικής, Αρχιτέκτονας, Αρτοποιος, Αποθηκάριος, PR, Κόπτης κρεάτων</td></tr>
-          <tr><td>Β</td><td>Προϊστάμενος πλυντηρίου, Βοηθός υποδοχής, Υπάλληλος κρατήσεων Β΄, Γραφείου, Θυρωρός Β΄, Σερβιτόρος τραπεζαρίας/σαλονιού/ορόφων, Θαλαμηπόλος, Μπάrμαν/Μπαργούμαν, Μάγειρας Β΄, Τεχνίτης ζαχαροπλάστης, Φύλακας, Βοηθός προϊσταμένου ορόφων, Κηπουρός, Ηλεκτροτεχνίτης, Οδηγός, Υπάλληλος πωλήσεων, Υπάλληλος spa, Βοηθός αποθηκάριου</td></tr>
-          <tr><td>Γ</td><td>Βοηθός σερβιτόρου, Οροφοκόμος, Βαλές, Θυρωρός υπηρεσίας, Βοηθός θυρωρείου, Βοηθός μπουφέ, Βοηθός εστιατορίου/bar, Βοηθός Αποθήκης, Γκρουμ, Ντόρμαν, Εξωτερικός θυρωρός, Λινοθηκάριος, Μάγειρας Γ΄, Βοηθός τεχνίτη ζαχαροπλάστη, Συντηρητής, Καμαριέρα, Καμαριέρης, Βοηθός αρτοποιού</td></tr>
-          <tr><td>Δ</td><td>Πλύστρια, Καθαρίστρια κοινόχρηστων, Λαντζέρης, Νίπτω Τζάκια, Ναυαγοσώστης, Εργάτης αποθήκης, καθαρίστριας ακτών/πισίνας, γενικών καθηκόντων</td></tr>
+          <tr><td>Α</td><td>Ρεσεψιονίστ, Υπάλληλος κρατήσεων Α’, Θυρωρός Α’, Νυχτοθυρωρός Α’, Maître, Υπομαίτρ, Κάπταιν, Μπουφετζής, Προϊστάμενος υποδοχοματίων, Ελεγκτής, Ταμπλίστας, Μάγειρας Α’, Υπεύθυνος Ζαχαροπλαστικής, Αρχιτέκτονας, Αρτοποιός, Αποθηκάριος, PR, Κόπτης κρεάτων</td></tr>
+          <tr><td>Β</td><td>Προϊστάμενος πλυντηρίου, Βοηθός υποδοχής, Υπάλληλος κρατήσεων Β’, Γκρουμ, Θυρωρός Β’, Σερβιτόρος τραπεζαρίας/σαλονιού/ορόφων, Θαλαμηπόλος, Μπάρμαν/Μπαργούμαν, Μάγειρας Β’, Τεχνίτης ζαχαροπλάστης, Φύλακας, Βοηθός προϊσταμένου ορόφων, Κηπουρός, Ηλεκτροτεχνίτης, Οδηγός, Υπάλληλος πωλήσεων, Υπάλληλος spa, Βοηθός αποθηκάριου</td></tr>
+          <tr><td>Γ</td><td>Βοηθός σερβιτόρου, Οροφοκόμος, Βαλέ, Θυρωρός υπηρεσίας, Βοηθός θυρωρείου, Βοηθός μπουφέ, Βοηθός εστιατορίου/bar, Βοηθός λαντζιέρης, Γκρουμ, Ντόρμαν, Εξωτερικός θυρωρός, Λινοθηκάριος, Μάγειρας Γ’, Βοηθός τεχνίτη ζαχαροπλάστη, Συντηρητής, Καμαριέρα, Καμαριέρες, Βοηθός αρτοποιού</td></tr>
+          <tr><td>Δ</td><td>Πλύντρια, Καθαρίστρια κοινοχρήστων, Λαντζέρης, Νίπτω Τζάκευ, Ναυαγοσώστης, Εργάτης αποθήκης, καθαρίστρια ακτών/πισίνας, γενικών καθηκόντων</td></tr>
         </tbody>
       </table>
     </div>
-
-    <div class="left-column">
-      <h2>Βήμα 1: ΣΤΑΘΕΡΕΣ ΠΑΡΑΓΟΝΤΕΣ</h2>
-
-      <label>Κατηγορία:
-        <select>
-          <option>Α</option>
-          <option selected>Β</option>
-          <option>Γ</option>
-          <option>Δ</option>
-        </select>
-        <span class="note">Αντιστοιχίστε την ειδικότητα σας και επιλέξτε την κατηγορία στην οποία ανήκετε</span>
-      </label>
-
-      <label>Έτη Προϋπηρεσίας:
-        <input type="number" min="0">
-        <span class="note">Μετράται βάσει ενσήμων. Δεν λαμβάνεται υπόψη η εποχική εργασία. Ισχύει και υπολογισμός "νεκρής περιόδου" βάσει σύμβασης.</span>
-      </label>
-
-      <label>Οικογενειακή Κατάσταση (Έγγαμος / Διαζ. / Μονογονέας):
-        <select><option>Όχι</option><option>Ναι</option></select>
-      </label>
-
-      <label>Εποχιακός:
-        <select><option>Όχι</option><option>Ναι</option></select>
-        <span class="note">Επιλέξτε Ναι αν εργάζεστε εποχιακά</span>
-      </label>
-
-      <label>Ανθυγιεινή Εργασία:
-        <select><option>Όχι</option><option>Κουζίνα</option><option>Λάντζα</option><option>Καμαριέρα / Καθαρίστρια</option></select>
-        <span class="note">Επιλέξτε αν ανήκετε σε μία από τις παρακάτω επιλογές</span>
-      </label>
-
-      <label>Τουριστική Εκπαίδευση:
-        <select><option>Καμία</option><option>Ταχύρρυθμη</option><option>Μέση</option><option>Ανώτατη</option></select>
-        <span class="note">
-          Το ποσοστό διαφοροποιείται ανάλογα με τον τίτλο σπουδών:<br>
-          • 15% → Πτυχίο Ανωτέρας Τουριστικής Εκπαίδευσης<br>
-          • 10% → Μέση σχολή, μετεκπαίδευση, ΙΕΚ με πιστοποίηση<br>
-          • 6% → Ταχύρρυθμη με τουλάχιστον 150 ώρες
-        </span>
-      </label>
-
-      <label>Επίδομα Τέκνων:
-        <select>
-          <option>Όχι</option>
-          <option>Τουλάχιστον 3 τέκνα</option>
-          <option>Πάνω από 3 τέκνα</option>
-          <option>Μονογονεϊκή Οικογένεια</option>
-          <option>Τέκνο ΑΜΕΑ</option>
-        </select>
-        <span class="note">
-          Αν ισχύει μία από τις εξής προϋποθέσεις:<br>
-          • Τουλάχιστον 3 προστατευόμενα τέκνα<br>
-          • Μονογονεϊκή οικογένεια (ασκών την επιμέλεια) έως 18 ετών<br>
-          • Τέκνο ΑΜΕΑ<br>
-          ➤ Πάνω από 3 τέκνα: Επίδομα 80€ (αντί για 50€)
-        </span>
-      </label>
-    </div>
   </div>
 
-  <h2>Βήμα 2: ΠΡΑΓΜΑΤΙΚΗ ΑΠΑΣΧΟΛΗΣΗ</h2>
-  <!-- Τα inputs του Βήματος 2 παραμένουν από τον υπάρχοντα δυναμικό κώδικα και συνεχίζουμε -->
+  <div id="step2">
+    <h2>Βήμα 2: ΠΡΑΓΜΑΤΙΚΗ ΑΠΑΣΧΟΛΗΣΗ</h2>
+    <!-- Εδώ συνεχίζουμε με τα πεδία ημερομισθίων, αργιών, 6ης ημέρας κλπ. -->
+  </div>
+
 </body>
 </html>

@@ -1,74 +1,76 @@
 <!DOCTYPE html>
 <html lang="el">
+
 <head>
   <meta charset="UTF-8">
-  <title>ΕΡΓΑΛΕΙΟ ΥΠΟΛΟΓΙΣΜΟΥ ΜΙΣΘΟΔΟΣΙΑΣ PHAEA v1.3</title>
+  <title>ΕΡΓΑΛΕΙΟ ΥΠΟΛΟΓΙΣΜΟΥ ΜΙΣΘΟΔΟΣΙΑΣ PHAEA</title>
   <style>
     body {
       font-family: Arial, sans-serif;
       background-color: #f6f3e9;
       padding: 20px;
     }
+
     img.logo {
       display: block;
-      margin: 0 auto 10px auto;
+      margin: 0 auto;
       height: 60px;
     }
+
     h1 {
       text-align: center;
-      margin-bottom: 5px;
     }
+
     .disclaimer {
-      background-color: #fff3cd;
-      border-left: 6px solid #ffeeba;
-      padding: 10px 20px;
+      background-color: #fff2c7;
+      border-left: 4px solid #f0b800;
+      padding: 10px;
       margin: 20px 0;
-      font-size: 14px;
     }
-    .section {
+
+    .container {
       display: flex;
       justify-content: space-between;
-      align-items: flex-start;
       flex-wrap: wrap;
     }
-    .left, .right {
-      width: 48%;
+
+    .left,
+    .right {
+      flex: 1;
+      min-width: 300px;
+      margin: 10px;
     }
-    label {
-      font-weight: bold;
+
+    label,
+    select,
+    input {
       display: block;
-      margin-top: 15px;
-    }
-    input, select {
+      margin: 10px 0;
       width: 100%;
-      padding: 6px;
-      margin-top: 5px;
     }
-    .note {
-      font-size: 13px;
-      color: #333;
-      margin-top: 5px;
-    }
+
     table {
       border-collapse: collapse;
       width: 100%;
-      margin-top: 15px;
-      font-size: 14px;
+      background-color: white;
     }
-    th, td {
-      border: 1px solid #aaa;
-      padding: 8px;
+
+    th,
+    td {
+      border: 1px solid #ccc;
+      padding: 6px 10px;
       text-align: left;
     }
-    #step2 {
-      margin-top: 50px;
+
+    h2 {
+      margin-top: 40px;
     }
   </style>
 </head>
-<body>
 
-  <img src="Images/phaea-logo.png" alt="PHAEA Logo" class="logo">
-  <h1>ΕΡΓΑΛΕΙΟ ΥΠΟΛΟΓΙΣΜΟΥ ΜΙΣΘΟΔΟΣΙΑΣ PHAEA <span style="font-size: 14px;">v1.3</span></h1>
+<body>
+  <img src="phaea-logo.png.png" alt="PHAEA Logo" class="logo">
+  <h1>ΕΡΓΑΛΕΙΟ ΥΠΟΛΟΓΙΣΜΟΥ ΜΙΣΘΟΔΟΣΙΑΣ PHAEA <span style="font-size: 0.7em;">v2.0</span></h1>
 
   <p><strong>Σύμφωνα με την Π.Κ. 8.4.2025 Τοπική Κλαδική Σύμβαση Ξενοδοχειακών Επιχειρήσεων ν. Ηρακλείου (ΑΠΟ 1/4/2025)</strong></p>
 
@@ -77,9 +79,25 @@
     <ul>
       <li>Τα αποτελέσματα ενδέχεται να παρουσιάζουν αποκλίσεις λόγω μεταβλητότητας των φορολογικών (ΦΜΥ) και ασφαλιστικών κρατήσεων κάθε εργαζομένου.</li>
     </ul>
+    Για επίσημα και δεσμευτικά στοιχεία μισθοδοσίας, παρακαλείστε να απευθύνεστε στο Τμήμα Ανθρώπινου Δυναμικού ή στο λογιστήριο της εταιρείας.
   </div>
 
-  <div class="section">
+  <div class="container">
+    <div class="right">
+      <h3>Κατηγορίες & Ειδικότητες</h3>
+      <table>
+        <thead>
+          <tr><th>Κατηγορία</th><th>Ειδικότητες</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Α</td><td>Ρεσεψιονίστ, Υπάλληλος κρατήσεων Α’, Θυρωρός Α’, Νυχτοθυρωρός Α’, Maître, Υπομαίτρ, Κάπταιν, Μπουφετζής, Προϊστάμενος υποδοχοματίων, Ελεγκτής, Ταμπλίστας, Μάγειρας Α’, Υπεύθυνος Ζαχαροπλαστικής, Αρχιτέκτονας, Αρτοποιός, Αποθηκάριος, PR, Κόπτης κρεάτων</td></tr>
+          <tr><td>Β</td><td>Προϊστάμενος πλυντηρίων, Βοηθός υποδοχής, Υπάλληλος κρατήσεων Β’, Γκρουμ, Θυρωρός Β’, Σερβιτόρος τραπεζαρίας/σαλονιού/ορόφων, Θαλαμηπόλος, Μπάρμαν/Μπαργούμαν, Μάγειρας Β’, Τεχνίτης ζαχαροπλάστης, Φύλακας, Βοηθός προϊσταμένου ορόφων, Κηπουρός, Ηλεκτροτεχνίτης, Οδηγός, Υπάλληλος πωλήσεων, Υπάλληλος spa, Βοηθός αποθηκάριου</td></tr>
+          <tr><td>Γ</td><td>Βοηθός σερβιτόρου, Οροφοκόμος, Βαλές, Θυρωρός υπηρεσίας, Βοηθός θυρωρείου, Βοηθός μπουφέ, Βοηθός εστιατορίου/bar, Βοηθός Αποθήκης, Γκρουμ, Ντόρμαν, Εξωτερικός θυρωρός, Λινοθήκαριος, Μάγειρας Γ’, Βοηθός τεχνίτη ζαχαροπλάστη, Συντηρητής, Καμαριέρα, Καμαριέρες, Βοηθός αρτοποιού</td></tr>
+          <tr><td>Δ</td><td>Πλύντρια, Καθαρίστρια κοινοχρήστων, Λαντζέρης, Νίπτω Τζάκευ, Ναυαγοσώστης, Εργάτης αποθήκης, καθαρίστρια ακτών/πισίνας, γενικών καθηκόντων</td></tr>
+        </tbody>
+      </table>
+    </div>
+
     <div class="left">
       <h2>Βήμα 1: ΣΤΑΘΕΡΕΣ ΠΑΡΑΓΟΝΤΕΣ</h2>
 
@@ -90,13 +108,11 @@
         <option>Γ</option>
         <option>Δ</option>
       </select>
-      <div class="note">Αντιστοιχίστε την ειδικότητά σας και επιλέξτε την κατηγορία στην οποία ανήκετε</div>
 
-      <label>Έτη Προϋπηρεσίας:</label>
-      <input type="number" min="0" value="0">
-      <div class="note">Μετράει βάσει ενσήμων. Δεν λαμβάνεται υπόψη η εποχιακή εργασία. Ισχύει και υπολογισμός "νεκρής περιόδου" βάσει σύμβασης.</div>
+      <label>Έτη Προϋπηρεσίας (βάσει ενσήμων):</label>
+      <input type="number" min="0">
 
-      <label>Οικογενειακή Κατάσταση:</label>
+      <label>Οικογενειακή Κατάσταση (Έγγαμος / Διαζ. / Μονογονέας):</label>
       <select>
         <option>Όχι</option>
         <option>Ναι</option>
@@ -107,16 +123,14 @@
         <option>Όχι</option>
         <option>Ναι</option>
       </select>
-      <div class="note">Επιλέξτε Ναι αν εργάζεστε εποχιακά</div>
 
       <label>Ανθυγιεινή Εργασία:</label>
       <select>
         <option>Όχι</option>
         <option>Κουζίνα</option>
         <option>Λάντζα</option>
-        <option>Καμαριέρες</option>
+        <option>Καμαριέρες/Καθαρίστριες</option>
       </select>
-      <div class="note">Επιλέξτε αν ανήκετε σε μία από τις παραπάνω επιλογές</div>
 
       <label>Τουριστική Εκπαίδευση:</label>
       <select>
@@ -125,11 +139,6 @@
         <option>Μέση</option>
         <option>Ανώτατη</option>
       </select>
-      <div class="note">
-        • 15% → Ανωτέρες Τουριστικές Σχολές<br>
-        • 10% → ΙΕΚ, Μετεκπαίδευση, Μέσες Σχολές<br>
-        • 6% → Ταχύρρυθμη (150 ώρες + βεβαίωση)
-      </div>
 
       <label>Επίδομα Τέκνων:</label>
       <select>
@@ -139,57 +148,47 @@
         <option>Μονογονεϊκή Οικογένεια</option>
         <option>Τέκνο ΑΜΕΑ</option>
       </select>
-      <div class="note">
-        Αν ισχύει μία από τις εξής προϋποθέσεις:<br>
-        • Τουλάχιστον 3 τέκνα → 50€<br>
-        • Πάνω από 3 τέκνα → 80€<br>
-        • Μονογονεϊκή οικογένεια ή Τέκνο ΑΜΕΑ
-      </div>
-    </div>
 
-    <div class="right">
-      <h3>Κατηγορίες & Ειδικότητες</h3>
-      <table>
-        <tr><th>Κατηγορία</th><th>Ειδικότητες</th></tr>
-        <tr><td>Α</td><td>Ρεσεψιονίστ, Υπάλληλος κρατήσεων Α’, Θυρωρός Α’, Maître, Μπουφετζής, κ.ά.</td></tr>
-        <tr><td>Β</td><td>Προϊστάμενος πλυντηρίου, Μπάρμαν, Μάγειρας Β’, Οδηγός, Υπάλληλος SPA, κ.ά.</td></tr>
-        <tr><td>Γ</td><td>Οροφοκόμος, Βοηθοί, Γκρουμ, Καμαριέρες, Συντηρητής, κ.ά.</td></tr>
-        <tr><td>Δ</td><td>Πλύντρια, Καθαρίστρια, Ναυαγοσώστης, Εργάτης αποθήκης, κ.ά.</td></tr>
-      </table>
     </div>
   </div>
 
-  <div id="step2">
-    <h2>Βήμα 2: ΠΡΑΓΜΑΤΙΚΗ ΑΠΑΣΧΟΛΗΣΗ</h2>
+  <h2>Βήμα 2: ΠΡΑΓΜΑΤΙΚΗ ΑΠΑΣΧΟΛΗΣΗ</h2>
 
-    <label>Ο μήνας επιλέχθηκε:</label>
-    <input type="month">
+  <label>Μήνας Αναφοράς:</label>
+  <input type="month">
 
-    <label>Ημέρες σε πρόσληψη:</label>
-    <select>
-      <option>Ολόκληρος Μήνας</option>
-      <option>Από … έως …</option>
-    </select>
+  <label>Ημέρες σε πρόσληψη:</label>
+  <select>
+    <option>Ολόκληρος Μήνας</option>
+    <option>Από ... έως ...</option>
+  </select>
 
-    <label>Ημερομηνία που εργάστηκες:</label>
-    <input type="text" placeholder="π.χ. 15">
+  <label>Ημερομίσθια που εργαστήκατε:</label>
+  <input type="number">
 
-    <label>Πόσες Κυριακές:</label>
-    <input type="number">
+  <label>Πόσες Κυριακές εργαστήκατε:</label>
+  <input type="number">
 
-    <label>Πόσες Αργίες:</label>
-    <input type="number">
+  <label>Πόσες Κυριακές ήταν 6η ημέρα εργασίας:</label>
+  <input type="number">
 
-    <label>Ώρες Νυχτερινής Εργασίας:</label>
-    <input type="number">
+  <label>Πόσες Αργίες εργαστήκατε:</label>
+  <input type="number">
 
-    <label>Εργασία με Σπαστό Ωράριο:</label>
-    <select>
-      <option>Όχι</option>
-      <option>Ναι</option>
-    </select>
-    <div class="note">Επιλέξτε Ναι αν εργάζεστε με σπαστό ωράριο που δεν πληροί τις προϋποθέσεις ανάπαυσης – προστίθεται επίδομα 5%</div>
-  </div>
+  <label>Ώρες Νυχτερινής Εργασίας:</label>
+  <input type="number">
+
+  <label>Πόσες ώρες ήταν Νυχτερινές και Κυριακή:</label>
+  <input type="number">
+
+  <label>Πόσες ώρες ήταν Νυχτερινές και Κυριακή & 6η ημέρα:</label>
+  <input type="number">
+
+  <label>Εργασία με Σπαστό Ωράριο:</label>
+  <select>
+    <option>Όχι</option>
+    <option>Ναι</option>
+  </select>
 
 </body>
 </html>

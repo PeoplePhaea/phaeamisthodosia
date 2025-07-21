@@ -1,11 +1,10 @@
 <!DOCTYPE html>
 <html lang="el">
-
 <head>
   <meta charset="UTF-8">
   <title>ΕΡΓΑΛΕΙΟ ΥΠΟΛΟΓΙΣΜΟΥ ΜΙΣΘΟΔΟΣΙΑΣ PHĀEA</title>
   <style>
-    /* Φόρτωση Neue Haas Unica W1G Light από τα αρχεία που έχεις στο root */
+    /* Φόρτωση Neue Haas Unica W1G Light */
     @font-face {
       font-family: 'Neue Haas Unica W1G';
       src: url('b3e7ec92be019ae762384c96eeea3073.woff2') format('woff2'),
@@ -17,85 +16,38 @@
 
     body {
       font-family: 'Neue Haas Unica W1G', Arial, sans-serif;
+      font-weight: 300;
       background-color: #f6f3e9;
       padding: 20px;
     }
 
-    img.logo {
-      display: block;
-      margin: 0 auto;
-      height: 120px;
-    }
-
+    img.logo { display: block; margin: 0 auto; height: 120px; }
     h1 { text-align: center; }
-
-    .disclaimer {
-      background-color: #fff2c7;
-      border-left: 4px solid #f0b800;
-      padding: 10px;
-      margin: 20px 0;
-    }
-
-    .container {
-      display: flex;
-      justify-content: space-between;
-      flex-wrap: wrap;
-    }
-
-    .left, .right {
-      flex: 1;
-      min-width: 300px;
-      margin: 10px;
-    }
-
-    label {
-      display: block;
-      margin: 10px 0 0;
-    }
-
+    .disclaimer { background-color: #fff2c7; border-left: 4px solid #f0b800; padding: 10px; margin: 20px 0; }
+    .container { display: flex; justify-content: space-between; flex-wrap: wrap; }
+    .left, .right { flex: 1; min-width: 300px; margin: 10px; }
+    label { display: block; margin: 10px 0 0; }
     select,
     input[type="text"],
     input[type="number"],
     input[type="month"],
     input[readonly] {
-      width: 50%;
-      padding: 5px;
-      margin: 5px 0;
-      background-color: #f7f7f7;
+      width: 50%; padding: 5px; margin: 5px 0; background-color: #f7f7f7;
     }
-
-    small, ul {
-      display: block;
-      margin: 5px 0;
-    }
-
-    table {
-      border-collapse: collapse;
-      width: 100%;
-      background-color: white;
-    }
-
-    th, td {
-      border: 1px solid #ccc;
-      padding: 6px 10px;
-      text-align: left;
-    }
-
+    small, ul { display: block; margin: 5px 0; }
+    table { border-collapse: collapse; width: 100%; background-color: white; }
+    th, td { border: 1px solid #ccc; padding: 6px 10px; text-align: left; }
     h2 { margin-top: 40px; }
   </style>
 </head>
-
 <body>
+
   <img src="phaea-logo.png" alt="PHAEA Logo" class="logo">
-  <h1>ΕΡΓΑΛΕΙΟ ΥΠΟΛΟΓΙΣΜΟΥ ΜΙΣΘΟΔΟΣΙΑΣ PHĀEA <span style="font-size: 0.7em;">v2.0</span></h1>
-
+  <h1>ΕΡΓΑΛΕΙΟ ΥΠΟΛΟΓΙΣΜΟΥ ΜΙΣΘΟΔΟΣΙΑΣ PHĀEA <span style="font-size:0.7em;">v2.0</span></h1>
   <p><strong>Σύμφωνα με την Π.Κ. 8.4.2025 Τοπική Κλαδική Σύμβαση Ξενοδοχειακών Επιχειρήσεων ν. Ηρακλείου (ΑΠΟ 1/4/2025)</strong></p>
-
   <div class="disclaimer">
-    <strong>Σημείωση:</strong> Το παρόν εργαλείο υπολογίζει μισθοδοσία βάσει της ΣΣΕ Ηρακλείου 2025–2026 και έχει ενδεικτικό χαρακτήρα.
-    <ul>
-      <li>Διακυμάνσεις λόγω φορολογικών (ΦΜΥ) και ασφαλιστικών κρατήσεων.</li>
-    </ul>
+    <strong>Σημείωση:</strong> Ενδεικτικά αποτελέσματα. Για επίσημα στοιχεία επικοινωνήστε με HR/λογιστήριο.
+    <ul><li>Διακυμάνσεις λόγω ΦΜΥ/ασφαλιστικών κρατήσεων.</li></ul>
   </div>
 
   <div class="container">
@@ -133,10 +85,10 @@
       <table>
         <thead><tr><th>Κατηγορία</th><th>Ειδικότητες</th></tr></thead>
         <tbody>
-          <tr><td>Α</td><td>Ρεσεψιονίστ, Θυρωρός Α’, Μάγειρας Α’...</td></tr>
-          <tr><td>Β</td><td>Βοηθός υποδοχής, Μάγειρας Β’...</td></tr>
-          <tr><td>Γ</td><td>Οροφοκόμος, Συντηρητής...</td></tr>
-          <tr><td>Δ</td><td>Καθαρίστρια, Εργάτης αποθήκης...</td></tr>
+          <tr><td>Α</td><td>Ρεσεψιονίστ, Θυρωρός Α’, Μάγειρας Α’…</td></tr>
+          <tr><td>Β</td><td>…</td></tr>
+          <tr><td>Γ</td><td>…</td></tr>
+          <tr><td>Δ</td><td>…</td></tr>
         </tbody>
       </table>
     </div>
@@ -155,29 +107,30 @@
       </select>
       <input type="text" id="periodResult" readonly placeholder="--">
     </label>
-    <!-- Άλλα πεδία ανάλογα με τις ανάγκες -->
+    <!-- Περισσότερα πεδία… -->
   </div>
 
   <script>
     const salaryMap = {'Α':'1020€','Β':'998€','Γ':'979€','Δ':'962€'};
-    document.getElementById('categorySelect').addEventListener('change', function() {
+    document.getElementById('categorySelect').addEventListener('change', function(){
       document.getElementById('categoryResult').value = salaryMap[this.value] || '';
       computeFamily();
     });
-    document.getElementById('expInput').addEventListener('input', function() {
+    document.getElementById('expInput').addEventListener('input', function(){
       const y = parseInt(this.value, 10) || 0;
-      document.getElementById('expResult').value = (y * 6.20).toFixed(2).replace('.',',') + '€';
+      document.getElementById('expResult').value = (y*6.20).toFixed(2).replace('.',',') + '€';
       computeFamily();
     });
     document.getElementById('familySelect').addEventListener('change', computeFamily);
-    function computeFamily() {
+    function computeFamily(){
       const fam = document.getElementById('familySelect').value;
       const cat = parseFloat((salaryMap[document.getElementById('categorySelect').value]||'0').replace('€','').replace(',','.')) || 0;
       const exp = parseFloat(document.getElementById('expResult').value.replace('€','').replace(',','.')) || 0;
       document.getElementById('familyResult').value =
-        fam === 'Άγαμος' ? '0€' : ((cat + exp) * 0.10).toFixed(2).replace('.',',') + '€';
+        fam === 'Άγαμος'
+          ? '0€'
+          : ((cat + exp)*0.10).toFixed(2).replace('.',',') + '€';
     }
   </script>
 </body>
-
 </html>

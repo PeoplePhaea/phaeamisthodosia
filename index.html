@@ -5,8 +5,18 @@
   <meta charset="UTF-8">
   <title>ΕΡΓΑΛΕΙΟ ΥΠΟΛΟΓΙΣΜΟΥ ΜΙΣΘΟΔΟΣΙΑΣ PHĀEA</title>
   <style>
+    /* Φόρτωση Neue Haas Unica W1G Light */
+    @font-face {
+      font-family: 'Neue Haas Unica W1G';
+      src: url('fonts/NeueHaasUnicaW1G-Light.woff2') format('woff2'),
+           url('fonts/NeueHaasUnicaW1G-Light.woff') format('woff');
+      font-weight: 300;
+      font-style: normal;
+      font-display: swap;
+    }
+
     body {
-      font-family: Arial, sans-serif;
+      font-family: 'Neue Haas Unica W1G', Arial, sans-serif;
       background-color: #f6f3e9;
       padding: 20px;
     }
@@ -34,13 +44,7 @@
       flex-wrap: wrap;
     }
 
-    .left {
-      flex: 1;
-      min-width: 300px;
-      margin: 10px;
-    }
-
-    .right {
+    .left, .right {
       flex: 1;
       min-width: 300px;
       margin: 10px;
@@ -54,17 +58,17 @@
     select,
     input[type="text"],
     input[type="number"],
-    input[type="date"],
+    input[type="month"],
     input[readonly] {
       width: 50%;
       padding: 5px;
       margin: 5px 0;
+      background-color: #f7f7f7;
     }
 
     small, ul {
       display: block;
-      margin-top: 5px;
-      margin-bottom: 10px;
+      margin: 5px 0;
     }
 
     table {
@@ -73,8 +77,7 @@
       background-color: white;
     }
 
-    th,
-    td {
+    th, td {
       border: 1px solid #ccc;
       padding: 6px 10px;
       text-align: left;
@@ -87,22 +90,21 @@
 </head>
 
 <body>
-  <img src="phaea-logo.png.png" alt="PHAEA Logo" class="logo">
+  <img src="phaea-logo.png" alt="PHAEA Logo" class="logo">
   <h1>ΕΡΓΑΛΕΙΟ ΥΠΟΛΟΓΙΣΜΟΥ ΜΙΣΘΟΔΟΣΙΑΣ PHĀEA <span style="font-size: 0.7em;">v2.0</span></h1>
 
-  <p><strong>Σύμφωνα με την Π.Κ. 8.4.2025 Τοπική Κλαδική Σύμβαση Ξενοδοχειακών Επιχειρήσεων ν. Ηρακλείου (ΑΠΟ 1/4/2025)</strong></p>
+  <p><strong>Σύμφωνα με την Π.Κ. 8.4.2025 Τοπική Κλαδική Σύμβαση Ξενοδοχειακών Επιχειρήσεων ν. Ηρακλείου (από 01/04/2025)</strong></p>
 
   <div class="disclaimer">
-    <strong>Σημείωση:</strong> Το παρόν εργαλείο υπολογίζει μισθοδοσία βάσει της ΣΣΕ Ηρακλείου 2025–2026 (Π.Κ. 8/4/2025) και έχει ενδεικτικό χαρακτήρα. Δεν αποτελεί επίσημη μισθολογική βεβαίωση και δεν υποκαθιστά τις εφαρμοζόμενες διαδικασίες του λογιστηρίου ή του HR.
+    <strong>Σημείωση:</strong> Το παρόν εργαλείο υπολογίζει μισθοδοσία βάσει της ΣΣΕ Ηρακλείου 2025–2026 και έχει ενδεικτικό χαρακτήρα.
     <ul>
-      <li>Τα αποτελέσματα ενδέχεται να παρουσιάζουν αποκλίσεις λόγω μεταβλητότητας των φορολογικών (ΦΜΥ) και ασφαλιστικών κρατήσεων κάθε εργαζομένου.</li>
+      <li>Διακυμάνσεις λόγω φορολογικών (ΦΜΥ) και ασφαλιστικών κρατήσεων.</li>
     </ul>
-    Για επίσημα και δεσμευτικά στοιχεία μισθοδοσίας, παρακαλείστε να απευθύνεστε στο Τμήμα Ανθρώπινου Δυναμικού ή στο λογιστήριο της εταιρείας.
   </div>
 
   <div class="container">
     <div class="left">
-      <h2>Βήμα 1: ΣΤΑΘΕΡΕΣ ΠΑΡΑΓΟΝΤΕΣ</h2>
+      <h2>Βήμα 1: Σταθεροί Παράγοντες</h2>
       <label>Κατηγορία:
         <select id="categorySelect">
           <option value="Α">Α</option>
@@ -110,144 +112,75 @@
           <option value="Γ">Γ</option>
           <option value="Δ">Δ</option>
         </select>
-        <input type="text" id="categoryResult" readonly placeholder="Αποτέλεσμα">
+        <input type="text" id="categoryResult" readonly placeholder="Μισθός">
       </label>
-      <small>Αντιστοιχίστε την ειδικότητά σας και επιλέξτε την κατηγορία στην οποία ανήκετε</small>
 
-      <label>Έτη Προϋπηρεσίας (βάσει ενσήμων):
-        <input type="number">
+      <label>Έτη Προϋπηρεσίας:
+        <input type="number" id="expInput" min="0">
+        <input type="text" id="expResult" readonly placeholder="Επίδομα">
       </label>
-      <small>Μετράτε βάσει ενσήμων. Δεν λαμβάνεται υπόψη η εποχική εργασία. Ισχύει και υπολογισμός “νεκρής περιόδου” βάσει σύμβασης.</small>
 
-      <label>Οικογενειακή Κατάσταση (Έγγαμος / Διαζ. / Μονογονέας):
-        <select>
-          <option>Άγαμος</option>
-          <option>Έγγαμος</option>
-          <option>Διαζευγμένος</option>
-          <option>Μονογονέας</option>
+      <label>Οικογενειακή Κατάσταση:
+        <select id="familySelect">
+          <option value="Άγαμος">Άγαμος</option>
+          <option value="Έγγαμος">Έγγαμος</option>
+          <option value="Διαζευγμένος">Διαζευγμένος</option>
+          <option value="Χήρος">Χήρος</option>
+          <option value="Μονογονέας με επιμέλεια">Μονογονέας με επιμέλεια</option>
         </select>
+        <input type="text" id="familyResult" readonly placeholder="Επίδομα 10%">
       </label>
-
-      <label>Εποχιακός:
-        <select>
-          <option>Όχι</option>
-          <option>Ναι</option>
-        </select>
-      </label>
-      <small>Επιλέξτε Ναι αν εργάζεστε εποχιακά</small>
-
-      <label>Ανθυγιεινή Εργασία:
-        <select>
-          <option>Όχι</option>
-          <option>Κουζίνα</option>
-          <option>Λάντζα</option>
-          <option>Καθαρίστρια/Καμαριέρα</option>
-        </select>
-      </label>
-      <small>Επιλέξτε αν ανήκετε σε μία από τις παραπάνω επιλογές</small>
-
-      <label>Τουριστική Εκπαίδευση:
-        <select>
-          <option>Καμία</option>
-          <option>Ταχύρρυθμη</option>
-          <option>Μέση</option>
-          <option>Ανώτερη</option>
-        </select>
-      </label>
-      <small>Το ποσοστό διαφοροποιείται ανάλογα με τον τίτλο σπουδών:</small>
-      <ul>
-        <li>15% → Ανώτερες Τουριστικές Σχολές</li>
-        <li>10% → Μέση, ΙΕΚ, Μετεκπαίδευση με πιστοποίηση</li>
-        <li>6% → Ταχύρρυθμη (τουλάχιστον 150 ώρες)</li>
-      </ul>
-
-      <label>Επίδομα Τέκνων:
-        <select>
-          <option>Όχι</option>
-          <option>Τουλάχιστον 3 τέκνα</option>
-          <option>3 τέκνα +</option>
-          <option>Μονογονεϊκή</option>
-          <option>Τέκνο ΑΜΕΑ</option>
-        </select>
-      </label>
-      <small>Αν ισχύει μία από τις εξής προϋποθέσεις:</small>
-      <ul>
-        <li>Τουλάχιστον 3 προστατευόμενα τέκνα (50€)</li>
-        <li>Άνω των 3 τέκνων → Επίδομα 80€ αντί για 50€</li>
-        <li>Μονογονεϊκή οικογένεια (ασκών την επιμέλεια)</li>
-        <li>Τέκνο ΑΜΕΑ</li>
-      </ul>
     </div>
 
     <div class="right">
       <h3>Κατηγορίες & Ειδικότητες</h3>
       <table>
-        <thead>
-          <tr><th>Κατηγορία</th><th>Ειδικότητες</th></tr>
-        </thead>
+        <thead><tr><th>Κατηγορία</th><th>Ειδικότητες</th></tr></thead>
         <tbody>
-          <tr><td>Α</td><td>Ρεσεψιονίστ, Υπάλληλος κρατήσεων Α’, Θυρωρός Α’, Νυχτοθυρωρός Α’, Maître, Υπομαίτρ, Κάπταιν, Μπουφετζής, Προϊστάμενος υποδοχοματίων, Ελεγκτής, Ταμπλίστας, Μάγειρας Α’, Υπεύθυνος Ζαχαροπλαστικής, Αρχιτέκτονας, Αρτοποιός, Αποθηκάριος, PR, Κόπτης κρεάτων</td></tr>
-          <tr><td>Β</td><td>Προϊστάμενος πλυντηρίων, Βοηθός υποδοχής, Υπάλληλος κρατήσεων Β’, Γκρουμ, Θυρωρός Β’, Σερβιτόρος τραπεζαρίας/σαλονιού/ορόφων, Θαλαμηπόλος, Μπάρμαν/Μπαργούμαν, Μάγειρας Β’, Τεχνίτης ζαχαροπλάστης, Φύλακας, Βοηθός προϊσταμένου ορόφων, Κηπουρός, Ηλεκτροτεχνίτης, Οδηγός, Υπάλληλος πωλήσεων, Υπάλληλος spa, Βοηθός αποθηκάριου</td></tr>
-          <tr><td>Γ</td><td>Βοηθός σερβιτόρου, Οροφοκόμος, Βαλές, Θυρωρός υπηρεσίας, Βοηθός θυρωρείου, Βοηθός μπουφέ, Βοηθός εστιατορίου/bar, Βοηθός Αποθήκης, Γκρουμ, Ντόρμαν, Εξωτερικός θυρωρός, Λινοθήκαριος, Μάγειρας Γ’, Βοηθός τεχνίτη ζαχαροπλάστη, Συντηρητής, Καμαριέρα, Καμαριέρες, Βοηθός αρτοποιού</td></tr>
-          <tr><td>Δ</td><td>Πλύντρια,Καθαρίστρια κοινοχρήστων, Λαντζέρης, Νίπτω Τζάκευ, Ναυαγοσώστης, Εργάτης αποθήκης, Καθαρίστρια ακτών/πισίνας, γενικών καθηκόντων</td></tr>
+          <tr><td>Α</td><td>Ρεσεψιονίστ, Θυρωρός Α’, Μάγειρας Α’...</td></tr>
+          <tr><td>Β</td><td>Βοηθός υποδοχής, Μάγειρας Β’...</td></tr>
+          <tr><td>Γ</td><td>Οροφοκόμος, Συντηρητής...</td></tr>
+          <tr><td>Δ</td><td>Καθαρίστρια, Εργάτης αποθήκης...</td></tr>
         </tbody>
       </table>
     </div>
   </div>
 
-  <h2>Βήμα 2: ΠΡΑΓΜΑΤΙΚΗ ΑΠΑΣΧΟΛΗΣΗ</h2>
+  <h2>Βήμα 2: Πραγματική Απασχόληση</h2>
   <div class="left">
     <label>Μήνας Αναφοράς:
-      <input type="month">
+      <input type="month" id="monthInput">
+      <input type="text" id="monthResult" readonly placeholder="--">
     </label>
-    <label>Επιλογή Εργασιακής Περιόδου:
-      <select>
-        <option>Ολόκληρος Μήνας</option>
-        <option>Από Ημ/νία έως Ημ/νία</option>
+    <label>Επιλογή Περιόδου:
+      <select id="periodSelect">
+        <option value="full">Ολόκληρος Μήνας</option>
+        <option value="partial">Από έως</option>
       </select>
+      <input type="text" id="periodResult" readonly placeholder="--">
     </label>
-    <label>Ημέρες σε Πρόσληψη (αν μερικός):
-      <input type="text" placeholder="π.χ. 10 έως 25">
-    </label>
-    <label>Πόσες Κυριακές εργάστηκε:
-      <input type="number">
-    </label>
-    <label>Πόσες Αργίες εργάστηκε:
-      <input type="number">
-    </label>
-    <label>Ώρες Νυχτερινής Εργασίας:
-      <input type="number">
-    </label>
-    <label>Κυριακές που ήταν 6η μέρα εργασίας:
-      <input type="number">
-    </label>
-    <label>Νυχτερινά σε Κυριακή:
-      <input type="number">
-    </label>
-    <label>Νυχτερινά σε Κυριακή & 6η μέρα:
-      <input type="number">
-    </label>
-    <label>Εργασία με Σπαστό Ωράριο:
-      <select>
-        <option>Όχι</option>
-        <option>Ναι</option>
-      </select>
-      <small>Επιλέξτε Ναι αν εργάζεστε με σπαστό ωράριο που δεν πληροί τις προϋποθέσεις ανάπαυσης – προστίθεται επίδομα 5%.</small>
-    </label>
+    <!-- Άλλα πεδία ανάλογα με τις ανάγκες -->
   </div>
 
   <script>
-    const salaryMap = {
-      'Α': '1020€',
-      'Β': '998€',
-      'Γ': '979€',
-      'Δ': '962€'
-    };
-
+    const salaryMap = {'Α':'1020€','Β':'998€','Γ':'979€','Δ':'962€'};
     document.getElementById('categorySelect').addEventListener('change', function() {
-      const resultField = document.getElementById('categoryResult');
-      resultField.value = salaryMap[this.value] || '';
+      document.getElementById('categoryResult').value = salaryMap[this.value] || '';
+      computeFamily();
     });
+    document.getElementById('expInput').addEventListener('input', function() {
+      const y = parseInt(this.value, 10) || 0;
+      document.getElementById('expResult').value = (y * 6.20).toFixed(2).replace('.',',') + '€';
+      computeFamily();
+    });
+    document.getElementById('familySelect').addEventListener('change', computeFamily);
+    function computeFamily() {
+      const fam = document.getElementById('familySelect').value;
+      const cat = parseFloat((salaryMap[document.getElementById('categorySelect').value]||'0').replace('€','').replace(',','.')) || 0;
+      const exp = parseFloat(document.getElementById('expResult').value.replace('€','').replace(',','.')) || 0;
+      document.getElementById('familyResult').value =
+        fam === 'Άγαμος' ? '0€' : ((cat + exp) * 0.10).toFixed(2).replace('.',',') + '€';
+    }
   </script>
 </body>
 
